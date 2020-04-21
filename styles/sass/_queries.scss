@@ -1,0 +1,16 @@
+@media (max-width: 1000px) {
+    header {
+        .site-navigation {
+            .menu-bars {
+                display: block;
+            }
+            ul {
+                flex-direction: column;
+                position: absolute;
+                top: 75px;
+                right: -150px;
+                transition: right 0.5s;
+            }
+        }
+    }
+}

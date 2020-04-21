@@ -1,0 +1,56 @@
+$header-font: 'Raleway', 'Arial', 'Helvetica', sans-serif;
+$paragraph-font: 'Open Sans', 'Arial', 'Helvetica', sans-serif;
+
+$primary-color: #f7931b;
+$primary-color-darker: #9f5800;
+$secondary-color: #186f9d;
+$secondary-color-darker: #014c8c;
+
+$light-gray: #f8f9f9;
+$gray: #777;
+$dark-gray: #333;
+
+@mixin wrapper {
+    max-width: 1200px;
+    width: 85%;
+    margin: auto;
+}
+
+@mixin bleed {
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+}
+
+@mixin primary-button {
+    color: white;
+    background-color: $primary-color;
+    border-radius: 2px;
+    text-transform: uppercase;
+    &:hover {
+        background-color: $secondary-color;
+    }
+}
+
+@mixin secondary-button {
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 2px;
+    text-transform: uppercase;
+    &:hover {
+        color: $dark-gray;
+        background-color: white;
+    }
+}
+
+@mixin box-button {
+    color: white;
+    background-color: $primary-color;
+    box-shadow: inset 0 -5px $primary-color-darker;
+}
+
+@mixin box-button-hover {
+    background-color: $secondary-color;
+    box-shadow: inset 0 -5px $secondary-color-darker;
+}

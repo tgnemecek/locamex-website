@@ -1,0 +1,294 @@
+header {
+    height: 100vh;
+    position: relative;
+    background-color: black;
+    @include bleed;
+    .img-slideshow {
+        z-index: -1;
+        div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-size: cover;
+            opacity: 0;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(39, 39, 39, 0.568);
+        }
+    }
+    .content {
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include wrapper;
+    }
+    .logo {
+        max-width: 500px;
+    }
+    .subtitle {
+        margin: 2rem 0;
+        font-style: italic;
+        color: white;
+        text-align: center;
+    }
+    .buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        .services {
+            @include primary-button;
+        }
+        .quote {
+            @include secondary-button;
+        }
+    }
+    .navigation-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: right;
+        z-index: 10;
+        transition: background-color 0.3s;
+        nav {
+            @include wrapper;
+        }
+        .nav-logo {
+            flex-grow: 1;
+            text-align: left;
+            padding: 0.5rem 0 0.5rem 0;
+            p:first-child {
+                font-size: 1.3rem;
+            }
+            p:nth-child(2) {
+                font-size: 0.6rem;
+            }
+        }
+        .menu-bars {
+            font-size: 2rem;
+            padding: 25px;
+            display: none;
+        }
+        ul {
+            display: flex;
+            justify-content: flex-end;
+        }
+        .menu-bars:hover + ul, ul:hover {
+            right: 0;
+        }
+        li {
+            padding: 0.5rem 0 0 1.4rem;
+            // padding: 5px 25px 5px 0;
+        }
+        a {
+            line-height: 2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+        }
+        a, p {
+            font-weight: 600;
+            color: white;
+            transition: color 0.3s;
+        }
+    }
+}
+
+section {
+    padding: 4rem 0;
+    box-shadow: inset 0px -95px 24px -89px rgba(0,0,0,0.1);
+    .content { @include wrapper; }
+    h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .subtitle {
+        text-align: center;
+        margin-bottom: 4rem;
+        font-size: 1rem;
+    }
+}
+
+section.services {
+    ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+    li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        padding: 25px;
+        background-color: white;
+        transition: box-shadow 0.2s;
+        align-content: flex-start;
+        cursor: default;
+        p {
+            font-size: 0.7rem;
+        }
+        h3 {
+            margin-bottom: 0.7rem;
+        }
+        &:hover {
+            box-shadow: 0 6px 9px rgba(0,0,0,.09);
+        }
+    }
+    i {
+        grid-row-end: span 2;
+        font-size: 3.2rem;
+        color: $primary-color;
+        margin-right: 25px;
+    }
+}
+
+section.products {
+    ul {
+        display: grid;
+        grid-template-columns: repeat(6, calc(100% / 6));
+        grid-auto-rows: 200px;
+        margin-bottom: 4rem;
+    }
+    li > a {
+        display: grid;
+        grid-template-columns: 1fr;
+        text-align: center;
+        height: 100%;
+        align-items: flex-end;
+        transition: background-image 0.2s;
+        &:hover {
+            background-image: linear-gradient(to bottom,#f9f9f9 0%,#f1f1f1 50%,#f1f1f1 100%);
+            button {
+                @include box-button-hover;
+            }
+            .img-container {
+                top: 0;
+                background-color: $secondary-color;
+                img {filter: invert(100%);}
+            }
+        }
+    }
+    .img-container {
+        position: relative;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        top: 20px;
+        transition: top 0.2s, background-color 0.2s, color 0.2s;
+    }
+    button {
+        @include box-button;
+        width: 100%;
+        white-space: nowrap;
+        font-size: 0.8rem;
+    }
+    .other {
+        text-align: center;
+    }
+}
+
+section.clients {
+    .wrapper {@include wrapper};
+    .filter {
+        // display: grid;
+        // grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        li {
+            // flex-grow: 1;
+            min-width: calc(100% / 6);
+        }
+        li:first-child {
+            // flex-grow: 1;
+        }
+        button {
+            @include box-button;
+            padding: 1rem 0.5rem;
+            font-size: 0.7rem;
+            white-space: nowrap;
+            width: 100%;
+        }
+        button.selected {
+            @include box-button-hover;
+        }
+    }
+    .carousel {
+        @include wrapper;
+        width: 100%;
+        li {
+            overflow: hidden;
+            height: 0;
+            transition: height 0.5s;
+        }
+        img {
+            position: relative;
+        }
+    }
+}
+
+section.contact {
+    form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        margin-bottom: 3rem;
+        .left-side, .right-side {
+            display: grid;
+            gap: 25px;
+        }
+        .submit {
+            grid-column-end: span 2;
+            text-align: center;
+        }
+        button {
+            @include primary-button;
+        }
+    }
+    .contact-info {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        li {
+            list-style: circle;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .logo {
+            width: 75%;
+        }
+    }
+}
+
+footer {
+    background-color: $dark-gray;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    p {
+        font-size: 0.7rem;
+        color: $gray;
+    }
+    .version {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 15px;
+        font-style: italic;
+    }
+}
