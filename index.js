@@ -8,7 +8,7 @@ function filterClients(name, button) {
         height: `0`
     }
     let shown = {
-        height: 183 // This should be the exact image height
+        height: 92 // This should be the exact image height
     }
 
     $('section.clients .carousel > li').not(`.${name}`).css(hidden);
@@ -37,7 +37,6 @@ function clientsCarouselSetup() {
     $('.carousel img').each(function(i) {
         let inverse = $(this).hasClass('inverse');
         animate($(this), inverse);
-
     })
 }
 
@@ -118,9 +117,14 @@ function setupForm() {
     })
 }
 
+$( document ).ready(function() {
+    filterClients('main', $('.filter .selected'));
+});
+
 window.onload = function() {
     let versionEl = document.getElementById('version');
     versionEl.innerHTML = "v" + version;
+
     AOS.init({
         duration: 1000
     });
@@ -128,8 +132,6 @@ window.onload = function() {
     $('section.clients .filter button').on('click', function(e) {
         filterClients(e.target.value, $(this));
     })
-
-    filterClients('main', $('.filter .selected'));
 
     clientsCarouselSetup();
 

@@ -43,6 +43,12 @@
             }
         }
     }
+    section.category {
+        .main-list {
+            grid-template-columns: 1fr;
+            gap: 25px;
+        }
+    }
     section.services {
         ul {
             grid-template-columns: 1fr;
@@ -63,6 +69,20 @@
 }
 
 @media (max-width: 640px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    h2 {
+        font-size: 1.6rem;
+    }
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    section.services {
+        i {
+            font-size: 2.5rem;
+        }
+    }
     section.products {
         ul {
             grid-template-columns: repeat(2, 1fr);
@@ -71,6 +91,17 @@
 }
 
 @media (max-width: 420px) {
+    h1 {
+        font-size: 1.7rem;
+    }
+    .subtitle {
+        font-size: 0.8rem;
+    }
+    section.services {
+        i {
+            font-size: 2rem;
+        }
+    }
     section.products {
         ul {
             grid-template-columns: 1fr

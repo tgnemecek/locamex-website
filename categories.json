@@ -1,0 +1,379 @@
+[
+    {
+        "name": "events",
+        "label": "Eventos",
+        "url": "eventos.html",
+        "figures": [
+            {
+                "title": "IT Forum - Samsung - Expo Transamérica - São Paulo, SP",
+                "subtitle": "(Container Galvanizado Black)"
+            },
+            {
+                "title": "Schutz - Oscar Freire - São Paulo, SP",
+                "subtitle": "(Container Galvanizado Black)"
+            },
+            {
+                "title": "Diamond Distributor - LABACE 2017 - São Paulo, SP",
+                "subtitle": "(Container Revestido Adesivado)"
+            },
+            {
+                "title": "Adoro Bike - Jockey Club - São Paulo, SP",
+                "subtitle": "(Container Galvanizado Black)"
+            },
+            {
+                "title": "Johnny Walker - HUB Brasil - São Paulo, SP",
+                "subtitle": "(Container Revestido Pintado)"
+            },
+            {
+                "title": "VerifiCar - São Paulo, SP",
+                "subtitle": "(Container Revestido Adesivado)"
+            },
+            {
+                "title": "Ginger Day - JAMESON - São Paulo, SP",
+                "subtitle": "(Container Revestido Adesivado)"
+            },
+            {
+                "title": "IT Forum - Epson - Expo Transamérica - São Paulo, SP",
+                "subtitle": "(Container Galvanizado Black)"
+            },
+            {
+                "title": "M&T Expo - IPAF - Expo Imigrantes - São Paulo, SP",
+                "subtitle": "(Container Revestido com Toldo)"
+            }
+        ],
+        "list": [
+            {
+                "label": "Formatos",
+                "sub": [
+                    "Sala de Produção",
+                    "Estúdio de filmagem e entrevista",
+                    "Bilheteria",
+                    "House Mix e Auditórios",
+                    "Posto Médico e Bombeiros",
+                    "Banheiro coletivo",
+                    "Banheiro para pessoas com necessidades especiais",
+                    "Permite o acoplamento de múltiplos módulos"
+                ]
+            },
+            {
+                "label": "Versões",
+                "sub": [
+                    "3m x 2,40m ou 6m x 2,40m",
+                    "Revestimento térmico-acústico ou galvanizado",
+                    "Pintado ou adesivado"
+                ]
+            },
+            {
+                "label": "Acessórios Principais",
+                "sub": [
+                    "Ar condicionado",
+                    "Portas e janelas posicionáveis",
+                    "Mesas e cadeiras"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "stands",
+        "label": "Stands de Venda",
+        "url": "stands-de-venda.html",
+        "figures": [
+            {
+                "title": "Ecolife - Edifício Residencial Morumbi - São Paulo, SP",
+                "subtitle": "(Container Revestido com Fachada de Vidro)"
+            },
+            {
+                "title": "HM Engenharia - Condomínio Residencial - Itatiba, SP",
+                "subtitle": "(Container Revestido Triplo com Fachada de Vidro)"
+            },
+            {
+                "title": "Charles Cambur - Edifício Residencial Vila Mascote - São Paulo, SP",
+                "subtitle": "(Dois Containers Revestidos Adesivados com Fachada de Vidro)"
+            },
+            {
+                "title": "Tecnisa - Condomínio de Edifícios Residencial - Diadema, SP",
+                "subtitle": "(Dois Containers Revestidos com Fachada de Vidro)"
+            }
+        ],
+        "list": [
+            {
+                "label": "Características",
+                "sub": [
+                    "Fachada de vidro",
+                    "Revestimento térmico-acústico",
+                    "Um ou dois pavimentos",
+                    "Permite o acoplamento de múltiplos módulos"
+                ]
+            },
+            {
+                "label": "Versões",
+                "sub": [
+                    "3m x 2,40m ou 6m x 2,40m",
+                    "Com kit banheiro-copa ou vão livre",
+                    "Pintado ou adesivado"
+                ]
+            },
+            {
+                "label": "Acessórios Principais",
+                "sub": [
+                    "Ar condicionado",
+                    "Portas e janelas posicionáveis",
+                    "Mesas e cadeiras",
+                    "Toldo e deck de madeira"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "construction",
+        "label": "Obras",
+        "url": "obras.html",
+        "figures": [
+            {
+                "title": "Canteiro para Obras, Almoxarifado",
+                "subtitle": "(Container Galvanizado Acoplável)"
+            },
+            {
+                "title": "Canteiro para Obras, Almoxarifado",
+                "subtitle": "(Container Galvanizado)"
+            },
+            {
+                "title": "Canteiro para Obras, Almoxarifado",
+                "subtitle": "(Container Galvanizado)"
+            }
+        ],
+        "list": [
+            {
+                "label": "Formatos",
+                "sub": [
+                    "Almoxarifado",
+                    "Sanitário",
+                    "Suíte",
+                    "Canteiros de obras que atendem à NR18 com área de vivência e demais acomodações",
+                    "Fazemos o cálculo específico para a obra em questão",
+                    "Permite o acoplamento de múltiplos módulos"
+                ]
+            },
+            {
+                "label": "Versões",
+                "sub": [
+                    "3m x 2,40m ou 6m x 2,40m"
+                ]
+            },
+            {
+                "label": "Acessórios Principais",
+                "sub": [
+                    "Ar condicionado",
+                    "Armário-vestiário",
+                    "Bancos"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "labs",
+        "label": "Laboratórios",
+        "url": "laboratorios.html",
+        "figures": [
+            {
+                "title": "GE Electric - Macaé, RJ",
+                "subtitle": "(Container Revestido com Pia e Capela de Exaustão)"
+            },
+            {
+                "title": "GE Electric - Macaé, RJ",
+                "subtitle": "(Container Revestido com Pia e Capela de Exaustão)"
+            },
+            {
+                "title": "Dupont - Parque do Ibirapuera - São Paulo, SP",
+                "subtitle": "(Container Revestido com Kit Posto Médico)"
+            },
+            {
+                "title": "GE Electric - Macaé, RJ",
+                "subtitle": "(Container Revestido com Pia e Capela de Exaustão)"
+            }
+        ],
+        "list": [
+            {
+                "label": "Características",
+                "sub": [
+                    "Revestimento térmico-acústico",
+                    "Piso vinílico de fácil limpeza",
+                    "Desenvolvido para projetos personalizados",
+                    "Permite o acoplamento de múltiplos módulos"
+                ]
+            },
+            {
+                "label": "Versões",
+                "sub": [
+                    "3m x 2,40m ou 6m x 2,40m",
+                    "Pintado ou adesivado"
+                ]
+            },
+            {
+                "label": "Acessórios Principais",
+                "sub": [
+                    "Ar condicionado",
+                    "Capela de exaustão",
+                    "Geladeira e estufa",
+                    "Lava-olhos",
+                    "Bancadas e mesas inox"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "stores",
+        "label": "Lojas",
+        "url": "lojas.html",
+        "figures": [
+            {
+                "title": "Loja de Conveniência Am Pm - São Paulo, SP",
+                "subtitle": "(Seis Containers Revestidos Acoplados)"
+            },
+            {
+                "title": "Lanchonete Am Pm - São Paulo, SP",
+                "subtitle": "(Seis Containers Revestidos Acoplados com Bancada e Toldo)"
+            },
+            {
+                "title": "Loja de Conveniência Am Pm - São Paulo, SP",
+                "subtitle": "(Seis Containers Revestidos Acoplados)"
+            },
+            {
+                "title": "Dupont - Barra Mansa, RJ",
+                "subtitle": "(Quatro Containers Revestidos com Kit Refeitório)"
+            },
+            {
+                "title": "Loja de Conveniência Am Pm - São Paulo, SP",
+                "subtitle": "(Seis Containers Revestidos Acoplados)"
+            },
+            {
+                "title": "Café e Livraria - SESC Pompéia - São Paulo, SP",
+                "subtitle": "(Container Revestido)"
+            }
+        ],
+        "list": [
+            {
+                "label": "Formatos",
+                "sub": [
+                    "Loja de Conveniência",
+                    "Lanchonete",
+                    "Refeitório",
+                    "Todos os formatos com revestimento térmico-acústico",
+                    "Permite o acoplamento de múltiplos módulos"
+                ]
+            },
+            {
+                "label": "Versões",
+                "sub": [
+                    "3m x 2,40m ou 6m x 2,40m",
+                    "Pintado ou adesivado"
+                ]
+            },
+            {
+                "label": "Acessórios Principais",
+                "sub": [
+                    "Ar condicionado",
+                    "Geladeiras",
+                    "Bancos",
+                    "Bancada com pia",
+                    "Toldo e deck de madeira",
+                    "Mesas e cadeiras"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "offices",
+        "label": "Escritórios",
+        "url": "escritorios.html",
+        "figures": [
+            {
+                "title": "FC Barcelona - Escola de Futebol - São Paulo, SP",
+                "subtitle": "(Quatro Containers Revestidos Adesivados)"
+            },
+            {
+                "title": "Hospital Beneficiência Portuguesa - São Paulo, SP",
+                "subtitle": "(Seis Containers Revestidos Adesivados)"
+            },
+            {
+                "title": "Embaixada da Noruega - Brasília, DF",
+                "subtitle": "(20 Containers Revestidos em Dois Andares)"
+            },
+            {
+                "title": "Volkswagen - Ufficcio - São Paulo, SP",
+                "subtitle": "(Dois Containers Revestidos)"
+            }
+        ],
+        "list": [
+            {
+                "label": "Formatos",
+                "sub": [
+                    "Escritórios individuais e coletivos",
+                    "Salas de aula",
+                    "Auditórios",
+                    "Salas de Conferência e Reunião",
+                    "Todos os formatos com revestimento térmico-acústico",
+                    "Permite o acoplamento de múltiplos módulos"
+                ]
+            },
+            {
+                "label": "Versões",
+                "sub": [
+                    "3m x 2,40m ou 6m x 2,40m",
+                    "Pintado ou adesivado"
+                ]
+            },
+            {
+                "label": "Acessórios Principais",
+                "sub": [
+                    "Ar condicionado",
+                    "Portas e janelas posicionáveis",
+                    "Mesas e cadeiras"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "other",
+        "label": "Outros Usos",
+        "url": "outros.html",
+        "figures": [
+            {
+                "title": "Jogos Olímpicos 2016 - Rio de Janeiro, RJ",
+                "subtitle": "(12 Containers Revestidos Sanitários PNE)"
+            },
+            {
+                "title": "Autoflash - FENABRAVE 2017 - Expo Transamérica - São Paulo, SP",
+                "subtitle": "(Cabine Fotográfica)"
+            },
+            {
+                "title": "Posto Ipiranga - São Paulo, SP",
+                "subtitle": "(Container Revestido Sanitário PNE)"
+            },
+            {
+                "title": "Mezzanni - Sorocaba, SP",
+                "subtitle": "(Container Revestido 6 Posições)"
+            }
+        ],
+        "list": [
+            {
+                "label": "Formatos",
+                "sub": [
+                    "Sanitários 6 posições e vestiários",
+                    "Sanitários PNE",
+                    "Cabines Fotográficas",
+                    "A Locamex está sempre disposta a criar soluções inovadoras para as mais variadas necessidades e situações",
+                    "Projetamos soluções conforme a necessidade, criatividade e sonho"
+                ]
+            },
+            {
+                "label": "Versões",
+                "sub": [
+                    "3m x 2,40m ou 6m x 2,40m",
+                    "Revestimento térmico-acústico ou galvanizado",
+                    "Pintado ou adesivado"
+                ]
+            }
+        ]
+    }
+]
