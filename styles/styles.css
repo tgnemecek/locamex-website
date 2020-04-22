@@ -253,12 +253,17 @@ h2 {
 
 h3 {
   color: black;
+  font-size: 1.1rem;
   margin-bottom: 1.1rem;
 }
 
-p {
-  line-height: 1.2rem;
+.subtitle {
   font-size: 1rem;
+}
+
+p, a, address {
+  line-height: 1.2rem;
+  font-size: 0.8rem;
 }
 
 p, button, input, label, textarea, body {
@@ -345,6 +350,7 @@ header {
   height: 100vh;
   position: relative;
   background-color: black;
+  text-align: center;
   max-width: 1900px;
   width: 100%;
   margin: auto;
@@ -396,7 +402,8 @@ header .content {
 }
 
 header .logo {
-  max-width: 500px;
+  max-width: 100%;
+  width: 500px;
 }
 
 header .subtitle {
@@ -443,6 +450,7 @@ header .navigation-wrapper {
   top: 0;
   left: 0;
   width: 100%;
+  height: 3.5rem;
   text-align: right;
   z-index: 10;
   -webkit-transition: background-color 0.3s;
@@ -453,14 +461,20 @@ header .navigation-wrapper nav {
   max-width: 1200px;
   width: 85%;
   margin: auto;
+  position: relative;
+}
+
+header .navigation-wrapper .nav-logo-wrapper {
+  max-width: 1200px;
+  width: 85%;
+  margin: auto;
+  position: relative;
 }
 
 header .navigation-wrapper .nav-logo {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  position: absolute;
+  top: 15px;
   text-align: left;
-  padding: 0.5rem 0 0.5rem 0;
 }
 
 header .navigation-wrapper .nav-logo p:first-child {
@@ -473,7 +487,7 @@ header .navigation-wrapper .nav-logo p:nth-child(2) {
 
 header .navigation-wrapper .menu-bars {
   font-size: 2rem;
-  padding: 25px;
+  padding-top: 1rem;
   display: none;
 }
 
@@ -484,6 +498,8 @@ header .navigation-wrapper ul {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  -webkit-transition: right 0.3s;
+  transition: right 0.3s;
 }
 
 header .navigation-wrapper .menu-bars:hover + ul, header .navigation-wrapper ul:hover {
@@ -491,7 +507,7 @@ header .navigation-wrapper .menu-bars:hover + ul, header .navigation-wrapper ul:
 }
 
 header .navigation-wrapper li {
-  padding: 0.5rem 0 0 1.4rem;
+  padding: 1rem 0 0 1.4rem;
 }
 
 header .navigation-wrapper a {
@@ -501,7 +517,7 @@ header .navigation-wrapper a {
   font-size: 0.7rem;
 }
 
-header .navigation-wrapper a, header .navigation-wrapper p {
+header .navigation-wrapper a, header .navigation-wrapper p, header .navigation-wrapper i {
   font-weight: 600;
   color: white;
   -webkit-transition: color 0.3s;
@@ -528,7 +544,6 @@ section h2 {
 section .subtitle {
   text-align: center;
   margin-bottom: 4rem;
-  font-size: 1rem;
 }
 
 section.services ul {
@@ -555,10 +570,6 @@ section.services li {
   cursor: default;
 }
 
-section.services li p {
-  font-size: 0.7rem;
-}
-
 section.services li h3 {
   margin-bottom: 0.7rem;
 }
@@ -579,8 +590,8 @@ section.services i {
 section.products ul {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (calc(100% / 6))[6];
-      grid-template-columns: repeat(6, calc(100% / 6));
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: 200px;
   margin-bottom: 4rem;
 }
@@ -650,10 +661,6 @@ section.products button {
   font-size: 0.8rem;
 }
 
-section.products .other {
-  text-align: center;
-}
-
 section.clients .wrapper {
   max-width: 1200px;
   width: 85%;
@@ -711,6 +718,10 @@ section.clients .carousel img {
   position: relative;
 }
 
+section.contact {
+  position: relative;
+}
+
 section.contact form {
   display: -ms-grid;
   display: grid;
@@ -750,14 +761,20 @@ section.contact .contact-info {
       grid-template-columns: 1fr 1fr;
 }
 
-section.contact .contact-info li {
+section.contact .contact-info .contact-list > li {
   list-style: circle;
-  font-size: 0.8rem;
   margin-bottom: 1rem;
 }
 
+section.contact .contact-info .phone-list > li {
+  list-style: square;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
 section.contact .contact-info .logo {
-  width: 75%;
+  width: 55%;
+  margin: auto;
 }
 
 footer {
@@ -782,18 +799,76 @@ footer .version {
 }
 
 @media (max-width: 1000px) {
-  header .site-navigation .menu-bars {
+  section.products ul {
+    -ms-grid-columns: (200px)[3];
+        grid-template-columns: repeat(3, 200px);
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  section.contact form {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  section.contact form .submit {
+    grid-column-end: auto;
+  }
+  section.contact form textarea {
+    height: 200px;
+  }
+}
+
+@media (max-width: 800px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  p, a, address {
+    line-height: 1.1rem;
+  }
+  header .navigation-wrapper .menu-bars {
     display: block;
   }
-  header .site-navigation ul {
+  header .navigation-wrapper ul {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     position: absolute;
-    top: 75px;
-    right: -150px;
-    -webkit-transition: right 0.5s;
-    transition: right 0.5s;
+    right: -180px;
+  }
+  section.services ul {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  section.contact .contact-info {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+    margin-bottom: 180px;
+  }
+  section.contact iframe {
+    height: 250px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  section.products ul {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 420px) {
+  section.products ul {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
 }

@@ -91,7 +91,7 @@ function changeNavBar() {
         bar.css({
             backgroundColor: 'rgba(255, 255, 255, 0.95)'
         })
-        bar.find('p, a').css({
+        bar.find('p, a, i').css({
             color: 'black'
         })
 
@@ -99,7 +99,7 @@ function changeNavBar() {
         bar.css({
             backgroundColor: 'transparent'
         })
-        bar.find('p, a').css({
+        bar.find('p, a, i').css({
             color: 'white'
         })
     }

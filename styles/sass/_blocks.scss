@@ -2,6 +2,7 @@ header {
     height: 100vh;
     position: relative;
     background-color: black;
+    text-align: center;
     @include bleed;
     .img-slideshow {
         z-index: -1;
@@ -34,7 +35,8 @@ header {
         @include wrapper;
     }
     .logo {
-        max-width: 500px;
+        max-width: 100%;
+        width: 500px;
     }
     .subtitle {
         margin: 2rem 0;
@@ -58,16 +60,22 @@ header {
         top: 0;
         left: 0;
         width: 100%;
+        height: 3.5rem;
         text-align: right;
         z-index: 10;
         transition: background-color 0.3s;
         nav {
             @include wrapper;
+            position: relative;
+        }
+        .nav-logo-wrapper {
+            @include wrapper;
+            position: relative;
         }
         .nav-logo {
-            flex-grow: 1;
+            position: absolute;
+            top: 15px;
             text-align: left;
-            padding: 0.5rem 0 0.5rem 0;
             p:first-child {
                 font-size: 1.3rem;
             }
@@ -77,19 +85,19 @@ header {
         }
         .menu-bars {
             font-size: 2rem;
-            padding: 25px;
+            padding-top: 1rem;
             display: none;
         }
         ul {
             display: flex;
             justify-content: flex-end;
+            transition: right 0.3s;
         }
         .menu-bars:hover + ul, ul:hover {
             right: 0;
         }
         li {
-            padding: 0.5rem 0 0 1.4rem;
-            // padding: 5px 25px 5px 0;
+            padding: 1rem 0 0 1.4rem;
         }
         a {
             line-height: 2rem;
@@ -97,7 +105,7 @@ header {
             text-transform: uppercase;
             font-size: 0.7rem;
         }
-        a, p {
+        a, p, i {
             font-weight: 600;
             color: white;
             transition: color 0.3s;
@@ -116,7 +124,6 @@ section {
     .subtitle {
         text-align: center;
         margin-bottom: 4rem;
-        font-size: 1rem;
     }
 }
 
@@ -134,9 +141,6 @@ section.services {
         transition: box-shadow 0.2s;
         align-content: flex-start;
         cursor: default;
-        p {
-            font-size: 0.7rem;
-        }
         h3 {
             margin-bottom: 0.7rem;
         }
@@ -155,7 +159,7 @@ section.services {
 section.products {
     ul {
         display: grid;
-        grid-template-columns: repeat(6, calc(100% / 6));
+        grid-template-columns: repeat(6, 1fr);
         grid-auto-rows: 200px;
         margin-bottom: 4rem;
     }
@@ -196,26 +200,17 @@ section.products {
         white-space: nowrap;
         font-size: 0.8rem;
     }
-    .other {
-        text-align: center;
-    }
 }
 
 section.clients {
     .wrapper {@include wrapper};
     .filter {
-        // display: grid;
-        // grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         width: 100%;
         li {
-            // flex-grow: 1;
             min-width: calc(100% / 6);
-        }
-        li:first-child {
-            // flex-grow: 1;
         }
         button {
             @include box-button;
@@ -243,6 +238,7 @@ section.clients {
 }
 
 section.contact {
+    position: relative;
     form {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -263,13 +259,18 @@ section.contact {
     .contact-info {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        li {
+        .contact-list > li {
             list-style: circle;
-            font-size: 0.8rem;
             margin-bottom: 1rem;
         }
+        .phone-list > li {
+            list-style: square;
+            margin-top: 1rem;
+            margin-left: 1rem;
+        }
         .logo {
-            width: 75%;
+            width: 55%;
+            margin: auto;
         }
     }
 }

@@ -35,12 +35,17 @@ h2 {
 
 h3 {
     color: black;
+    font-size: 1.1rem;
     margin-bottom: 1.1rem;
 }
 
-p {
-    line-height: 1.2rem;
+.subtitle {
     font-size: 1rem;
+}
+
+p, a, address {
+    line-height: 1.2rem;
+    font-size: 0.8rem;
 }
 
 p, button, input, label, textarea, body {
