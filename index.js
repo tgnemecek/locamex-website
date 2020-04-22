@@ -1,4 +1,4 @@
-let version = '1.1.1';
+let version = '1.1.2';
 
 function filterClients(name, button) {
     $('section.clients .filter button').removeClass('selected');
