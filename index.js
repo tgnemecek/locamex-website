@@ -5,10 +5,12 @@ function filterClients(name, button) {
     button.addClass('selected');
 
     let hidden = {
-        height: `0`
+        height: `0`,
+        opacity: 0
     }
     let shown = {
-        height: 92 // This should be the exact image height
+        height: `calc(200vw / 25)`, // This should be the exact image height
+        opacity: 1
     }
 
     $('section.clients .carousel > li').not(`.${name}`).css(hidden);
@@ -35,6 +37,7 @@ function clientsCarouselSetup() {
         })
     }
     $('.carousel img').each(function(i) {
+        $(this).stop();
         let inverse = $(this).hasClass('inverse');
         animate($(this), inverse);
     })
@@ -106,6 +109,7 @@ function changeNavBar() {
 
 function setupForm() {
     let form = $('section.contact form');
+    let thanksBox = $('.thanks-box');
     let maxSize = 100; // In MB
     form.find('.file').on('change', function(e) {
         let file = e.target.files[0];
@@ -115,9 +119,31 @@ function setupForm() {
         }
         console.log(e.target.files);
     })
+    form.find('.submit').on('click', function(e) {
+        let errors = 0;
+        form.find('input[required]').each(function() {
+            if (!$(this).val()) errors++;
+            if ($(this).hasClass('email')) {
+                let str = $(this).val();
+                if (str.search(/@./) === -1) errors++;
+            }
+        })
+        if (!errors) {
+            e.preventDefault();
+            e.stopPropagation();
+            $.post(form.attr("action"), form.serialize()).then(function() {
+                $('.thanks-box').css({ display: 'flex' });
+            });
+        }
+    })
+    function closeThanksBox() {
+        thanksBox.css({ display: 'none' });
+    }
+    thanksBox.find('.background').on('click', closeThanksBox)
+    thanksBox.find('.box button').on('click', closeThanksBox)
 }
 
-$( document ).ready(function() {
+$(document).ready(function() {
     filterClients('main', $('.filter .selected'));
 });
 
@@ -133,6 +159,7 @@ window.onload = function() {
         filterClients(e.target.value, $(this));
     })
 
+    $(window).resize(clientsCarouselSetup);
     clientsCarouselSetup();
 
     setupHero();

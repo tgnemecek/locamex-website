@@ -284,7 +284,7 @@ section.clients {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        width: 100%;
+        margin-bottom: 25px;
         li {
             min-width: calc(100% / 6);
         }
@@ -300,21 +300,54 @@ section.clients {
         }
     }
     .carousel {
-        @include wrapper;
-        width: 100%;
+        @include bleed;
         li {
             overflow: hidden;
             height: 0;
-            transition: height 0.5s;
+            transition: height 0.5s, opacity 0.3s;
+            position: relative;
         }
         img {
             position: relative;
+            height: 100%;
+            width: 200vw; // Same as image
+            object-fit: cover;
         }
     }
 }
 
 section.contact {
     position: relative;
+    .thanks-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 3;
+        .background {
+            background-color: rgba(128, 128, 128, 0.363);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+        .box {
+            padding: 25px;
+            background-color: $light-gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            button {
+                @include primary-button;
+                margin-top: 25px;
+            }
+        }
+    }
     form {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -323,6 +356,44 @@ section.contact {
         .left-side, .right-side {
             display: grid;
             gap: 25px;
+            position: relative;
+        }
+        .bot {
+            display: none;
+        }
+        textarea:focus + .help-box {
+            opacity: 1;
+        }
+        .help-box {
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            background-color: rgb(241, 215, 143);
+            padding: 0.5rem;
+            strong, li {
+                color: black;
+                font-size: 0.8rem;
+                margin-top: 0.4rem;
+                list-style-type: circle;
+                list-style-position: inside;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border: 24px solid transparent;
+                border-top-color: rgb(241, 215, 143);
+                border-bottom: 0;
+                border-left: 0;
+                margin-left: -12px;
+                margin-bottom: -24px;
+            }
         }
         input {
             width: 100%;

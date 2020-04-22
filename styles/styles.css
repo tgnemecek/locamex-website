@@ -783,7 +783,7 @@ section.clients .filter {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100%;
+  margin-bottom: 25px;
 }
 
 section.clients .filter li {
@@ -808,25 +808,84 @@ section.clients .filter button.selected {
 }
 
 section.clients .carousel {
-  max-width: 1200px;
-  width: 85%;
-  margin: auto;
+  max-width: 1900px;
   width: 100%;
+  margin: auto;
 }
 
 section.clients .carousel li {
   overflow: hidden;
   height: 0;
-  -webkit-transition: height 0.5s;
-  transition: height 0.5s;
+  -webkit-transition: height 0.5s, opacity 0.3s;
+  transition: height 0.5s, opacity 0.3s;
+  position: relative;
 }
 
 section.clients .carousel img {
   position: relative;
+  height: 100%;
+  width: 200vw;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 section.contact {
   position: relative;
+}
+
+section.contact .thanks-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 3;
+}
+
+section.contact .thanks-box .background {
+  background-color: rgba(128, 128, 128, 0.363);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+section.contact .thanks-box .box {
+  padding: 25px;
+  background-color: #f8f9f9;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section.contact .thanks-box .box button {
+  color: white;
+  background-color: #f7931b;
+  border-radius: 2px;
+  text-transform: uppercase;
+  margin-top: 25px;
+}
+
+section.contact .thanks-box .box button:hover {
+  background-color: #186f9d;
 }
 
 section.contact form {
@@ -842,6 +901,50 @@ section.contact form .left-side, section.contact form .right-side {
   display: -ms-grid;
   display: grid;
   gap: 25px;
+  position: relative;
+}
+
+section.contact form .bot {
+  display: none;
+}
+
+section.contact form textarea:focus + .help-box {
+  opacity: 1;
+}
+
+section.contact form .help-box {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  background-color: #f1d78f;
+  padding: 0.5rem;
+}
+
+section.contact form .help-box strong, section.contact form .help-box li {
+  color: black;
+  font-size: 0.8rem;
+  margin-top: 0.4rem;
+  list-style-type: circle;
+  list-style-position: inside;
+}
+
+section.contact form .help-box:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 24px solid transparent;
+  border-top-color: #f1d78f;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -12px;
+  margin-bottom: -24px;
 }
 
 section.contact form input {
