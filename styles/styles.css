@@ -816,9 +816,15 @@ section.clients .carousel {
 section.clients .carousel li {
   overflow: hidden;
   height: 0;
+  opacity: 0;
   -webkit-transition: height 0.5s, opacity 0.3s;
   transition: height 0.5s, opacity 0.3s;
   position: relative;
+}
+
+section.clients .carousel li.selected {
+  height: calc(200vw / 25);
+  opacity: 1;
 }
 
 section.clients .carousel img {
@@ -989,6 +995,10 @@ section.contact .contact-info .phone-list > li {
 section.contact .contact-info .logo {
   width: 55%;
   margin: auto;
+}
+
+section.contact .contact-info iframe {
+  width: 100%;
 }
 
 footer {

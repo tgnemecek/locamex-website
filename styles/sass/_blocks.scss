@@ -304,8 +304,13 @@ section.clients {
         li {
             overflow: hidden;
             height: 0;
+            opacity: 0;
             transition: height 0.5s, opacity 0.3s;
             position: relative;
+        }
+        li.selected {
+            height: calc(200vw / 25);
+            opacity: 1;
         }
         img {
             position: relative;
@@ -421,6 +426,9 @@ section.contact {
         .logo {
             width: 55%;
             margin: auto;
+        }
+        iframe {
+            width: 100%;
         }
     }
 }

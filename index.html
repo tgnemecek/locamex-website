@@ -5,11 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Description" content="Site oficial da Locamex: empresa de Locação de Containers.">
     <title>Locamex: Containers Personalizados</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <link href="styles/fontawesome/all.min.css" rel="stylesheet">
+    <script
+        defer
+        src="https://code.jquery.com/jquery-3.5.0.min.js"
+        integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
+        crossorigin="anonymous"></script>
+    <script
+        defer
+        src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
+        integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs="
+        crossorigin="anonymous"
+        data-auto-replace-svg="nest"></script>
     <link rel="stylesheet" href="styles/styles.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="index.js"></script>
 </head>
 <body>
@@ -72,28 +82,28 @@
                     Com sede em São Paulo e containers espalhados por todo o Brasil, a <strong>LOCAMEX</strong> é a única no setor que apresenta:
                 </p>
                 <ul>
-                    <li>
+                    <li data-aos="fade-up">
                         <i class="fas fa-star"></i>
                         <h3>Qualidade Premium</h3>
                         <p>
                             A <strong>LOCAMEX</strong> se destaca da concorrência por ocupar um espaço exclusivo de Containers de qualidade Premium, com revestimento térmico e acústico e modelos para eventos e demonstrações.
                         </p>
                     </li>
-                    <li>
+                    <li data-aos="fade-up">
                         <i class="fas fa-cubes"></i>
                         <h3>Containers Modulares</h3>
                         <p>
                             A <strong>LOCAMEX</strong> inova ao possibilitar o acoplamento de múltiplos Containers para a criação de ambientes maiores como Salas de Aula, Refeitórios, Vestiários, Auditórios, Laboratórios e Escritórios.
                         </p>
                     </li>
-                    <li>
+                    <li data-aos="fade-up">
                         <i class="fas fa-paper-plane"></i>
                         <h3>Serviço de Entrega</h3>
                         <p>
                             Entrega com uso de caminhão munck ou caminhão plataforma para todo o Brasil. Montagem extremamente ágil dentro das normas de segurança do trabalho.
                         </p>
                     </li>
-                    <li>
+                    <li data-aos="fade-up">
                         <i class="fas fa-address-book"></i>
                         <h3>Nossos clientes</h3>
                         <p>
@@ -110,7 +120,7 @@
                     A <strong>LOCAMEX</strong> oferece um portfólio extenso de containers para diferentes necessidades e usos. Explore nossas opções:
                 </p>
                 <ul>
-                    <li>
+                    <li data-aos="zoom-in-up">
                         <a href="./eventos.html">
                             <div class="img-container">
                                 <picture>
@@ -121,7 +131,7 @@
                             <div><button>Eventos</button></div>
                         </a>
                     </li>
-                    <li>
+                    <li data-aos="zoom-in-up">
                         <a href="./stands-de-venda.html">
                             <div class="img-container">
                                 <picture>
@@ -132,7 +142,7 @@
                             <div><button>Stands de Venda</button></div>
                         </a>
                     </li>
-                    <li>
+                    <li data-aos="zoom-in-up">
                         <a href="./obras.html">
                             <div class="img-container">
                                 <picture>
@@ -143,7 +153,7 @@
                             <div><button>Obras</button></div>
                         </a>
                     </li>
-                    <li>
+                    <li data-aos="zoom-in-up">
                         <a href="./laboratorios.html">
                             <div class="img-container">
                                 <picture>
@@ -154,7 +164,7 @@
                             <div><button>Laboratórios</button></div>
                         </a>
                     </li>
-                    <li>
+                    <li data-aos="zoom-in-up">
                         <a href="./lojas.html">
                             <div class="img-container">
                                 <picture>
@@ -165,7 +175,7 @@
                             <div><button>Lojas</button></div>
                         </a>
                     </li>
-                    <li>
+                    <li data-aos="zoom-in-up">
                         <a href="./escritorios.html">
                             <div class="img-container">
                                 <picture>
@@ -199,13 +209,13 @@
                 </ul>
             </div>
             <ul class="carousel">
-                <li class="main">
+                <li class="main selected">
                     <picture>
                         <source type="image/webp" srcset="assets/clients/main-1.webp">
                         <img src="assets/clients/main-1.png" alt="Clientes Principais 1">
                     </picture>
                 </li>
-                <li class="main">
+                <li class="main selected">
                     <picture>
                         <source type="image/webp" srcset="assets/clients/main-2.webp">
                         <img class="inverse" src="assets/clients/main-2.png" alt="Clientes Principais 2">
@@ -269,7 +279,7 @@
                 <p class="subtitle">
                     Preencha nosso formulário ou entre em contato direto conosco:
                 </p>
-                <form name="contact" method="POST" netlify-honeypot="bot" data-netlify="true">
+                <form name="contact" method="POST" netlify-honeypot="bot" data-netlify="true" data-aos="fade-up">
                     <div class="left-side">
                         <label class="bot">Don’t fill this out if you're human: <input name="bot"/></label>
                         <label for="name" class="visually-hidden">Seu Nome:</label>
@@ -321,7 +331,7 @@
                         </picture> -->
                     </div>
                     <div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.1139827858483!2d46.651539199999995!3d23.636088699999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a8cb84bae1b%3A0x7cb519f9bdbf51bf!2sRua+Monsenhor+Ant%C3%B4nio+Pepe%2C+52+-+Parque+Jabaquara!5e0!3m2!1spt-BR!2sbr!4v1394563059730" width="100%" height="100%" frameborder="0"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.118397545962!2d-46.653601084430626!3d-23.635930570236834!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce5a8cb478ec65%3A0xfc4f29add81ecadc!2sR.%20Monsenhor%20Ant%C3%B4nio%20Pepe%2C%2052%20-%20Parque%20Jabaquara%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2004357-080%2C%20Brazil!5e0!3m2!1sen!2sca!4v1587550019023!5m2!1sen!2sca" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                     </div>
                 </div>
             </div>

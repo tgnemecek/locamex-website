@@ -1,20 +1,13 @@
-let version = '0.0.1';
+let version = '1.1.0';
 
 function filterClients(name, button) {
     $('section.clients .filter button').removeClass('selected');
     button.addClass('selected');
 
-    let hidden = {
-        height: `0`,
-        opacity: 0
-    }
-    let shown = {
-        height: `calc(200vw / 25)`, // This should be the exact image height
-        opacity: 1
-    }
-
-    $('section.clients .carousel > li').not(`.${name}`).css(hidden);
-    $(`section.clients .carousel > .${name}`).css(shown);
+    $('section.clients .carousel > li').not(`.${name}`)
+        .removeClass('selected');
+    $(`section.clients .carousel > .${name}`)
+        .addClass('selected');
 }
 
 function clientsCarouselSetup() {
@@ -62,7 +55,6 @@ function setupHero() {
         fakeImg.on('load', function() {
             loaded++;
             if (loaded === count) {
-                console.log('all loaded');
                 animate(0, array);
             }
         })
@@ -143,16 +135,12 @@ function setupForm() {
     thanksBox.find('.box button').on('click', closeThanksBox)
 }
 
-$(document).ready(function() {
-    filterClients('main', $('.filter .selected'));
-});
-
 window.onload = function() {
     let versionEl = document.getElementById('version');
     versionEl.innerHTML = "v" + version;
 
     AOS.init({
-        duration: 1000
+        duration: 800
     });
 
     $('section.clients .filter button').on('click', function(e) {
