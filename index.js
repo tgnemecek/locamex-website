@@ -87,11 +87,12 @@ function setupHero() {
 
     array.each(function(i) {
         let path = `assets/hero/${i+1}`;
-        $(this).find('source').attr('srcset', path + ".webp");
+        // $(this).find('img').attr('src', path + ".jpg");
+        // $(this).find('source').attr('srcset', path + ".webp");
         $(this).find('img').on('load', function() {
             loaded++;
             if (loaded === array.length) {
-                animate(0, array);
+                // animate(0, array);
             }
         })
     })
@@ -171,6 +172,9 @@ function setupForm() {
     thanksBox.find('.background').on('click', closeThanksBox)
     thanksBox.find('.box button').on('click', closeThanksBox)
 }
+
+const observer = lozad();
+observer.observe();
 
 window.onload = function() {
     let versionEl = document.getElementById('version');

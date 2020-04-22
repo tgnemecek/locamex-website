@@ -356,6 +356,7 @@ header {
 }
 
 header .img-slideshow {
+  z-index: 999;
   position: absolute;
   top: 0;
   left: 0;
@@ -374,7 +375,7 @@ header .img-slideshow img {
   background-color: black;
   -o-object-fit: cover;
      object-fit: cover;
-  opacity: 0;
+  opacity: 1;
 }
 
 header .img-slideshow:after {

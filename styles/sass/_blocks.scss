@@ -4,6 +4,7 @@ header {
     text-align: center;
     @include bleed;
     .img-slideshow {
+        z-index: 999;
         position: absolute;
         top: 0;
         left: 0;
@@ -19,7 +20,7 @@ header {
             height: 100%;
             background-color: black;
             object-fit: cover;
-            opacity: 0;
+            opacity: 1;
         }
         &:after {
             content: '';

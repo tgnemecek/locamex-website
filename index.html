@@ -6,16 +6,17 @@
     <meta name="Description" content="Site oficial da Locamex: empresa de Locação de Containers.">
     <title>Locamex: Containers Personalizados</title>
     <script
-        
+        defer
         src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
         crossorigin="anonymous"></script>
     <script
-        
+        defer
         src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
         integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs="
         crossorigin="anonymous"
         data-auto-replace-svg="nest"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <link rel="preconnect" href="https://maps.gstatic.com">
@@ -47,11 +48,16 @@
             </nav>
         </div>
         <div class="img-slideshow">
-            <picture>
-                <source type="image/webp" srcset="">
-                <img src="" alt="Imagem Principal 1">
+            <picture class="lozad" data-iesrc="assets/hero/1-1920.jpg" data-alt="Imagem Principal 1">
+                <source data-srcset="assets/hero/1-1920.webp" media="(min-width: 1920px)">
+                <source data-srcset="assets/hero/1-1024.webp" media="(min-width: 1024px)">
+                <source data-srcset="assets/hero/1-640.webp" media="(min-width: 640px)">
+                <source data-srcset="assets/hero/1-1920.jpg" media="(min-width: 1920px)">
+                <source data-srcset="assets/hero/1-1024.jpg" media="(min-width: 1024px)">
+                <source data-srcset="assets/hero/1-640.jpg" media="(min-width: 640px)">
+                <noscript><img src="assets/hero/1-1920.jpg" alt="Imagem Principal 1"></noscript>
             </picture>
-            <picture>
+            <!-- <picture>
                 <source type="image/webp" srcset="">
                 <img src="" alt="Imagem Principal 2">
             </picture>
@@ -70,7 +76,7 @@
             <picture>
                 <source type="image/webp" srcset="">
                 <img src="" alt="Imagem Principal 6">
-            </picture>
+            </picture> -->
         </div>
         <div class="content">
             <picture>
