@@ -36,31 +36,67 @@ function clientsCarouselSetup() {
     })
 }
 
+// function setupHero() {
+//     let array = $('header .img-slideshow > div');
+//     let count = 0;
+//     let loaded = 0;
+
+//     let waitTime = 1000;
+//     let fadeTime = 1000;
+
+//     array.each(function(i) {
+//         count++;
+//         let src = `assets/hero/${i+1}.jpg`;
+//         let fakeImg = new $(`<img src="${src}">`);
+//         $(this).css({
+//             // zIndex: -i,
+//             backgroundImage: `url(${src})`
+//         })
+//         fakeImg.on('load', function() {
+//             loaded++;
+//             if (loaded === count) {
+//                 animate(0, array);
+//             }
+//         })
+//     })
+//     function animate(i, array) {
+//         $(array[i])
+//             .delay(waitTime)
+//             .animate({ opacity: 1 }, {
+//                 duration: fadeTime,
+//                 always: () => {
+//                     let nextIndex = i === array.length-1 ? 0 : i+1;
+//                     animate(nextIndex, array)
+//                 }
+//             })
+//         let lastIndex = i > 0 ? i-1 : array.length-1;
+//         $(array[lastIndex])
+//             .delay(waitTime)
+//             .animate({ opacity: 0 }, {
+//                 duration: fadeTime
+//             })
+//     }
+// }
+
 function setupHero() {
-    let array = $('header .img-slideshow > div');
-    let count = 0;
+    let array = $('header .img-slideshow picture');
     let loaded = 0;
 
     let waitTime = 1000;
     let fadeTime = 1000;
 
     array.each(function(i) {
-        count++;
-        let src = `assets/hero/${i+1}.jpg`;
-        let fakeImg = new $(`<img src="${src}">`);
-        $(this).css({
-            // zIndex: -i,
-            backgroundImage: `url(${src})`
-        })
-        fakeImg.on('load', function() {
+        let path = `assets/hero/${i+1}`;
+        $(this).find('source').attr('srcset', path + ".webp");
+        $(this).find('img').on('load', function() {
             loaded++;
-            if (loaded === count) {
+            if (loaded === array.length) {
                 animate(0, array);
             }
         })
     })
     function animate(i, array) {
-        $(array[i])
+        $(array[i]).find('img')
             .delay(waitTime)
             .animate({ opacity: 1 }, {
                 duration: fadeTime,
@@ -70,7 +106,8 @@ function setupHero() {
                 }
             })
         let lastIndex = i > 0 ? i-1 : array.length-1;
-        $(array[lastIndex])
+        console.log($(array[lastIndex]).find('img'));
+        $(array[lastIndex]).find('img')
             .delay(waitTime)
             .animate({ opacity: 0 }, {
                 duration: fadeTime

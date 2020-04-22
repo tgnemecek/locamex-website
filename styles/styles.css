@@ -349,7 +349,6 @@ button:disabled, a.as-button.disabled {
 header {
   height: 100vh;
   position: relative;
-  background-color: black;
   text-align: center;
   max-width: 1900px;
   width: 100%;
@@ -357,16 +356,24 @@ header {
 }
 
 header .img-slideshow {
-  z-index: -1;
-}
-
-header .img-slideshow div {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
-  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  background-color: black;
+}
+
+header .img-slideshow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  -o-object-fit: cover;
+     object-fit: cover;
   opacity: 0;
 }
 
@@ -377,7 +384,7 @@ header .img-slideshow:after {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(39, 39, 39, 0.568);
+  background-color: rgba(39, 39, 39, 0.5);
 }
 
 header .content {
