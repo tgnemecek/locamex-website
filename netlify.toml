@@ -1,9 +1,9 @@
+# With this rule, I'm setting all files in the asset folder to have a 1 week cache age
 [[headers]]
-  # Define which paths this specific [[headers]] block will cover.
-  for = "/assets/hero/*"
+  for = "/assets/*"
+  
   [headers.values]
-    # Multi-value headers are expressed with multi-line strings.
 	cache-control = '''
-	max-age=60,
+	max-age=604800,
 	public,
 	immutable'''
