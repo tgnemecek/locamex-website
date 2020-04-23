@@ -108,3 +108,27 @@
         }
     }
 }
+
+@media (max-width: 740px) and (orientation:landscape) {
+    header.category {
+        height: 0;
+        min-height: 0;
+        .navigation-wrapper {
+            background-color: transparent;
+            i, a {
+                color: white;
+                text-shadow: 2px 2px black;
+            }
+            .nav-logo-wrapper {
+                display: none;
+            }
+        }
+    }
+    section.category {
+        .img-container {
+            margin: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+    }
+}
