@@ -36,4 +36,4 @@ function clientsCarousel(firstSetup) {
 }
 
 $(window).resize(() => clientsCarousel(false));
-clientsCarousel(true)
+clientsCarousel(true);

@@ -1,5 +1,3 @@
-let version = '1.2.2';
-
 function filterClients(name, button) {
     $('section.clients .filter button').removeClass('selected');
     button.addClass('selected');
@@ -78,9 +76,6 @@ function changeNavBar() {
 }
 
 window.onload = function() {
-    let versionEl = document.getElementById('version');
-    versionEl.innerHTML = "v" + version;
-
     AOS.init({
         duration: 800
     });
