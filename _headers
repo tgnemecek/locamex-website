@@ -1,2 +1,2 @@
 /assets/hero/*
-   Cache-Control = max-age=60
+   Cache-Control = public, max-age=60, immutable
