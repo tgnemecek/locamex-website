@@ -5,25 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Description" content="Site oficial da Locamex: empresa de Locação de Containers.">
     <title>Locamex: Containers Personalizados</title>
+    <!-- jQuery CDN -->
     <script
         defer
         src="https://code.jquery.com/jquery-3.5.0.min.js"
         integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ="
         crossorigin="anonymous"></script>
+    <!-- FontAwesome CDN -->
     <script
         defer
         src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"
         integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs="
         crossorigin="anonymous"
         data-auto-replace-svg="nest"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
-    <link rel="stylesheet" href="styles/styles.css">
+    <!-- AOS (Animate On Scroll Library) -->
     <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
+    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Google Maps Preconnect -->
     <link rel="preconnect" href="https://maps.gstatic.com">
     <link rel="preconnect" href="https://maps.googleapis.com">
     <link rel="preconnect" href="https://khms1.googleapis.com">
-    <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
-    <script defer src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Local Imports -->
+    <link rel="stylesheet" href="styles/styles.css">
     <script src="index.js"></script>
 </head>
 <body>
@@ -48,35 +52,78 @@
             </nav>
         </div>
         <div class="img-slideshow">
-            <picture class="lozad" data-iesrc="assets/hero/1-1920.jpg" data-alt="Imagem Principal 1">
-                <source data-srcset="assets/hero/1-1920.webp" media="(min-width: 1920px)">
-                <source data-srcset="assets/hero/1-1024.webp" media="(min-width: 1024px)">
-                <source data-srcset="assets/hero/1-640.webp" media="(min-width: 640px)">
-                <source data-srcset="assets/hero/1-1920.jpg" media="(min-width: 1920px)">
-                <source data-srcset="assets/hero/1-1024.jpg" media="(min-width: 1024px)">
-                <source data-srcset="assets/hero/1-640.jpg" media="(min-width: 640px)">
-                <noscript><img src="assets/hero/1-1920.jpg" alt="Imagem Principal 1"></noscript>
-            </picture>
-            <!-- <picture>
-                <source type="image/webp" srcset="">
-                <img src="" alt="Imagem Principal 2">
+            <picture>
+                <source
+                    type="image/webp"
+                    srcset="assets/hero/hero-forum-1920.webp 1920w, assets/hero/hero-forum-1024.webp 1024w, assets/hero/hero-forum-640.webp 640w"
+                    sizes="100vw">
+                <img
+                    loading="lazy"
+                    srcset="assets/hero/hero-forum-1920.jpg 1920w, assets/hero/hero-forum-1024.jpg 1024w, assets/hero/hero-forum-640.jpg 640w"
+                    sizes="100vw"
+                    src="assets/hero/hero-forum--1920.jpg"
+                    alt="Foto tirada à distância mostra o evento IT Forum de cima, que inclui variados containers de marcas famosas.">
             </picture>
             <picture>
-                <source type="image/webp" srcset="">
-                <img src="" alt="Imagem Principal 3">
+                <source
+                    type="image/webp"
+                    srcset="assets/hero/hero-schutz-2-1920.webp 1920w, assets/hero/hero-schutz-2-1024.webp 1024w, assets/hero/hero-schutz-2-640.webp 640w"
+                    sizes="100vw">
+                <img
+                    loading="lazy"
+                    srcset="assets/hero/hero-schutz-2-1920.jpg 1920w, assets/hero/hero-schutz-2-1024.jpg 1024w, assets/hero/hero-schutz-2-640.jpg 640w"
+                    sizes="100vw"
+                    src="assets/hero/hero-schutz-2-1920.jpg"
+                    alt="Foto tirada de dentro de um contâiner galvanizado, mostrando a marca Shutz. Várias televisões antigas mostram imagens diferentes.">
             </picture>
             <picture>
-                <source type="image/webp" srcset="">
-                <img src="" alt="Imagem Principal 4">
+                <source
+                    type="image/webp"
+                    srcset="assets/hero/hero-barcelona-1920.webp 1920w, assets/hero/hero-barcelona-1024.webp 1024w, assets/hero/hero-barcelona-640.webp 640w"
+                    sizes="100vw">
+                <img
+                    loading="lazy"
+                    srcset="assets/hero/hero-barcelona-1920.jpg 1920w, assets/hero/hero-barcelona-1024.jpg 1024w, assets/hero/hero-barcelona-640.jpg 640w"
+                    sizes="100vw"
+                    src="assets/hero/hero-barcelona-1920.jpg"
+                    alt="Foto tirada ao ar livre mostra um container adesivado pelo Barcelona FC, com as cores do clube e a imagem do Neymar.">
             </picture>
             <picture>
-                <source type="image/webp" srcset="">
-                <img src="" alt="Imagem Principal 5">
+                <source
+                    type="image/webp"
+                    srcset="assets/hero/hero-ibm-1920.webp 1920w, assets/hero/hero-ibm-1024.webp 1024w, assets/hero/hero-ibm-640.webp 640w"
+                    sizes="100vw">
+                <img
+                    loading="lazy"
+                    srcset="assets/hero/hero-ibm-1920.jpg 1920w, assets/hero/hero-ibm-1024.jpg 1024w, assets/hero/hero-ibm-640.jpg 640w"
+                    sizes="100vw"
+                    src="assets/hero/hero-ibm-1920.jpg"
+                    alt="Container feito para a IBM, galvanizado e colunas pretas. Pessoas conversam dentro dele.">
             </picture>
             <picture>
-                <source type="image/webp" srcset="">
-                <img src="" alt="Imagem Principal 6">
-            </picture> -->
+                <source
+                    type="image/webp"
+                    srcset="assets/hero/hero-schutz-1920.webp 1920w, assets/hero/hero-schutz-1024.webp 1024w, assets/hero/hero-schutz-640.webp 640w"
+                    sizes="100vw">
+                <img
+                    loading="lazy"
+                    srcset="assets/hero/hero-schutz-1920.jpg 1920w, assets/hero/hero-schutz-1024.jpg 1024w, assets/hero/hero-schutz-640.jpg 640w"
+                    sizes="100vw"
+                    src="assets/hero/hero-schutz-1920.jpg"
+                    alt="Container com a marca Shutz em neon.">
+            </picture>
+            <picture>
+                <source
+                    type="image/webp"
+                    srcset="assets/hero/hero-samsung-1920.webp 1920w, assets/hero/hero-samsung-1024.webp 1024w, assets/hero/hero-samsung-640.webp 640w"
+                    sizes="100vw">
+                <img
+                    loading="lazy"
+                    srcset="assets/hero/hero-samsung-1920.jpg 1920w, assets/hero/hero-samsung-1024.jpg 1024w, assets/hero/hero-samsung-640.jpg 640w"
+                    sizes="100vw"
+                    src="assets/hero/hero-samsung-1920.jpg"
+                    alt="Pessoas rindo e se divertindo com o aparelho de Realidade Virtual da Samsung. Um homem está com as mãos para cima e gargalhando.">
+            </picture>
         </div>
         <div class="content">
             <picture>

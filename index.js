@@ -36,68 +36,14 @@ function clientsCarouselSetup() {
     })
 }
 
-// function setupHero() {
-//     let array = $('header .img-slideshow > div');
-//     let count = 0;
-//     let loaded = 0;
-
-//     let waitTime = 1000;
-//     let fadeTime = 1000;
-
-//     array.each(function(i) {
-//         count++;
-//         let src = `assets/hero/${i+1}.jpg`;
-//         let fakeImg = new $(`<img src="${src}">`);
-//         $(this).css({
-//             // zIndex: -i,
-//             backgroundImage: `url(${src})`
-//         })
-//         fakeImg.on('load', function() {
-//             loaded++;
-//             if (loaded === count) {
-//                 animate(0, array);
-//             }
-//         })
-//     })
-//     function animate(i, array) {
-//         $(array[i])
-//             .delay(waitTime)
-//             .animate({ opacity: 1 }, {
-//                 duration: fadeTime,
-//                 always: () => {
-//                     let nextIndex = i === array.length-1 ? 0 : i+1;
-//                     animate(nextIndex, array)
-//                 }
-//             })
-//         let lastIndex = i > 0 ? i-1 : array.length-1;
-//         $(array[lastIndex])
-//             .delay(waitTime)
-//             .animate({ opacity: 0 }, {
-//                 duration: fadeTime
-//             })
-//     }
-// }
-
 function setupHero() {
-    let array = $('header .img-slideshow picture');
-    let loaded = 0;
+    let array = $('header .img-slideshow picture img');
 
     let waitTime = 1000;
     let fadeTime = 1000;
 
-    array.each(function(i) {
-        let path = `assets/hero/${i+1}`;
-        // $(this).find('img').attr('src', path + ".jpg");
-        // $(this).find('source').attr('srcset', path + ".webp");
-        $(this).find('img').on('load', function() {
-            loaded++;
-            if (loaded === array.length) {
-                // animate(0, array);
-            }
-        })
-    })
     function animate(i, array) {
-        $(array[i]).find('img')
+        $(array[i])
             .delay(waitTime)
             .animate({ opacity: 1 }, {
                 duration: fadeTime,
@@ -106,14 +52,16 @@ function setupHero() {
                     animate(nextIndex, array)
                 }
             })
+            
         let lastIndex = i > 0 ? i-1 : array.length-1;
-        console.log($(array[lastIndex]).find('img'));
-        $(array[lastIndex]).find('img')
+        $(array[lastIndex])
             .delay(waitTime)
             .animate({ opacity: 0 }, {
                 duration: fadeTime
             })
     }
+
+    animate(0, array);
 }
 
 function changeNavBar() {
@@ -173,9 +121,6 @@ function setupForm() {
     thanksBox.find('.box button').on('click', closeThanksBox)
 }
 
-const observer = lozad();
-observer.observe();
-
 window.onload = function() {
     let versionEl = document.getElementById('version');
     versionEl.innerHTML = "v" + version;
@@ -191,9 +136,9 @@ window.onload = function() {
     $(window).resize(clientsCarouselSetup);
     clientsCarouselSetup();
 
-    setupHero();
-
     setupForm();
+
+    setupHero();
 
     $(window).scroll(changeNavBar);
     changeNavBar();

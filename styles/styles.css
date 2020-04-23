@@ -350,7 +350,7 @@ header {
   height: 100vh;
   position: relative;
   text-align: center;
-  max-width: 1900px;
+  max-width: 1920px;
   width: 100%;
   margin: auto;
 }
@@ -375,7 +375,7 @@ header .img-slideshow img {
   background-color: black;
   -o-object-fit: cover;
      object-fit: cover;
-  opacity: 1;
+  opacity: 0;
 }
 
 header .img-slideshow:after {
@@ -816,7 +816,7 @@ section.clients .filter button.selected {
 }
 
 section.clients .carousel {
-  max-width: 1900px;
+  max-width: 1920px;
   width: 100%;
   margin: auto;
 }
