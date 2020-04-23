@@ -1,38 +1,98 @@
-let version = '1.2.0';
+let version = '1.2.2';
 
 function filterClients(name, button) {
     $('section.clients .filter button').removeClass('selected');
     button.addClass('selected');
 
-    $('section.clients .carousel > li').not(`.${name}`)
-        .removeClass('selected');
-    $(`section.clients .carousel > .${name}`)
-        .addClass('selected');
+    let toHide = $('section.clients .carousel > li.selected').not(`.${name}`);
+
+    let toShow = $(`section.clients .carousel > .${name}`);
+debugger;
+    toHide.find('picture').animate({
+        height: 0,
+        opacity: 0
+    })
+
+    let height = toShow.find('img').width() / 13;
+    let minHeight = Number(toShow.find('img').css('min-height').replace("px", ""));
+    height = height < minHeight ? minHeight : height;
+
+    toShow.find('picture').animate({
+        height,
+        opacity: 1
+    }, {
+        complete: () => toShow.find('picture').css('height', 'auto')
+    })
+
+    toShow.addClass('selected');
+    toHide.removeClass('selected');
+
+    // $('section.clients .carousel > li').not(`.${name}`)
+    //     .removeClass('selected');
+    // $(`section.clients .carousel > .${name}`)
+    //     .addClass('selected');
 }
 
-function clientsCarouselSetup() {
-    let duration = 20000;
-    function animate(jquery, inverse) {
-        let width = jquery.innerWidth();
-        let initLeft = inverse ? -width/2 : 0;
+// function clientsCarouselSetup() {
+//     let duration = 20000;
+//     function animate(jquery, inverse) {
+//         let width = jquery.innerWidth();
+//         let initLeft = inverse ? -width/2 : 0;
         
-        jquery.css({ left: initLeft });
+//         jquery.css({ left: initLeft });
 
+//         jquery.animate({
+//             left: inverse ? 0 : -width/2
+//         }, {
+//             duration,
+//             easing: 'linear',
+//             done: () => {
+//                 jquery.css({ left: initLeft });
+//                 animate(jquery, inverse);
+//             }
+//         })
+//     }
+//     $('.carousel img').each(function(i) {
+//         $(this).stop();
+//         let inverse = $(this).hasClass('inverse');
+//         animate($(this), inverse);
+//     })
+// }
+
+function clientsCarousel(firstSetup) {
+    let images = $('section.clients .carousel img');
+    let width = images.innerWidth();
+    let duration = 8000;
+
+    if (!firstSetup) images.stop();
+
+    function scroll(jquery, initLeft, finalLeft) {
+        jquery.css({ left: initLeft });
         jquery.animate({
-            left: inverse ? 0 : -width/2
+            left: finalLeft
         }, {
             duration,
-            easing: 'linear',
-            done: () => {
-                jquery.css({ left: initLeft });
-                animate(jquery, inverse);
-            }
+            easing: "linear",
+            complete: () => scroll(jquery, initLeft, finalLeft)
         })
     }
-    $('.carousel img').each(function(i) {
-        $(this).stop();
-        let inverse = $(this).hasClass('inverse');
-        animate($(this), inverse);
+
+    images.each(function(i) {
+        let reverse = $(this).hasClass('reverse');
+        if (reverse) {
+            $(this).css({ left: -width });
+        } else {
+            $(this).css({ left: 0 });
+        }
+
+        let finalLeft = reverse ? 0 : -width;
+        scroll($(this), $(this).css('left'), finalLeft);
+
+        if (firstSetup) {
+            let copy = $(this).clone();
+            $(this).parent().append(copy);
+            scroll(copy, copy.css('left'), finalLeft);
+        }
     })
 }
 
@@ -133,8 +193,8 @@ window.onload = function() {
         filterClients(e.target.value, $(this));
     })
 
-    $(window).resize(clientsCarouselSetup);
-    clientsCarouselSetup();
+    $(window).resize(() => clientsCarousel(false));
+    clientsCarousel(true);
 
     setupForm();
 

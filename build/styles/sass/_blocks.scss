@@ -285,6 +285,7 @@ section.products {
 }
 
 section.clients {
+    overflow-x: hidden;
     .wrapper {@include wrapper};
     .filter {
         display: flex;
@@ -307,22 +308,22 @@ section.clients {
     }
     .carousel {
         @include bleed;
-        li {
+        min-width: 900px;
+        li > picture {
+            width: 100%;
+            display: flex;
             overflow: hidden;
             height: 0;
             opacity: 0;
-            transition: height 0.5s, opacity 0.3s;
-            position: relative;
         }
-        li.selected {
-            height: calc(200vw / 25);
+        li.selected > picture {
+            height: auto;
             opacity: 1;
         }
         img {
             position: relative;
-            height: 100%;
-            width: 200vw; // Same as image
-            object-fit: cover;
+            display: inline-block;
+            width: 100%;
         }
     }
 }

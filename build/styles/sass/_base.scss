@@ -6,10 +6,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 html {
     font-size: 125%;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
-    overflow-x: hidden;
     background-color: $light-gray;
 }
 
