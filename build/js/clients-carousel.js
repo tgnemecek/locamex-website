@@ -35,5 +35,13 @@ function clientsCarousel(firstSetup) {
     })
 }
 
-$(window).resize(() => clientsCarousel(false));
+let previousWidth = $(window).width();
+
+$(window).resize(() => {
+    let currentWidth = $(window).width();
+    if (currentWidth !== previousWidth) {
+        previousWidth = currentWidth;
+        clientsCarousel(false);
+    }
+});
 clientsCarousel(true);
