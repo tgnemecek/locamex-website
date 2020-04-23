@@ -1,4 +1,4 @@
-let version = '1.1.2';
+let version = '1.2.0';
 
 function filterClients(name, button) {
     $('section.clients .filter button').removeClass('selected');
@@ -52,7 +52,7 @@ function setupHero() {
                     animate(nextIndex, array)
                 }
             })
-            
+
         let lastIndex = i > 0 ? i-1 : array.length-1;
         $(array[lastIndex])
             .delay(waitTime)
