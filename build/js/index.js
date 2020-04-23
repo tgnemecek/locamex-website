@@ -28,43 +28,6 @@ function filterClients(name, button) {
     toHide.removeClass('selected');
 }
 
-function clientsCarousel(firstSetup) {
-    let images = $('section.clients .carousel img');
-    let width = images.innerWidth();
-    let duration = 8000;
-
-    if (!firstSetup) images.stop();
-
-    function scroll(jquery, initLeft, finalLeft) {
-        jquery.css({ left: initLeft });
-        jquery.animate({
-            left: finalLeft
-        }, {
-            duration,
-            easing: "linear",
-            complete: () => scroll(jquery, initLeft, finalLeft)
-        })
-    }
-
-    images.each(function(i) {
-        let reverse = $(this).hasClass('reverse');
-        if (reverse) {
-            $(this).css({ left: -width });
-        } else {
-            $(this).css({ left: 0 });
-        }
-
-        let finalLeft = reverse ? 0 : -width;
-        scroll($(this), $(this).css('left'), finalLeft);
-
-        if (firstSetup) {
-            let copy = $(this).clone();
-            $(this).parent().append(copy);
-            scroll(copy, copy.css('left'), finalLeft);
-        }
-    })
-}
-
 function setupHero() {
     let array = $('header .img-slideshow picture img');
 
@@ -114,42 +77,6 @@ function changeNavBar() {
     }
 }
 
-function setupForm() {
-    let form = $('section.contact form');
-    let thanksBox = $('.thanks-box');
-    let maxSize = 100; // In MB
-    form.find('.file').on('change', function(e) {
-        let file = e.target.files[0];
-        if (file.size > maxSize * 1000000) {
-            this.value = '';
-            alert(`O arquivo não pode exceder ${maxSize} MB.`)
-        }
-        console.log(e.target.files);
-    })
-    form.find('.submit').on('click', function(e) {
-        let errors = 0;
-        form.find('input[required]').each(function() {
-            if (!$(this).val()) errors++;
-            if ($(this).hasClass('email')) {
-                let str = $(this).val();
-                if (str.search(/@./) === -1) errors++;
-            }
-        })
-        if (!errors) {
-            e.preventDefault();
-            e.stopPropagation();
-            $.post(form.attr("action"), form.serialize()).then(function() {
-                $('.thanks-box').css({ display: 'flex' });
-            });
-        }
-    })
-    function closeThanksBox() {
-        thanksBox.css({ display: 'none' });
-    }
-    thanksBox.find('.background').on('click', closeThanksBox)
-    thanksBox.find('.box button').on('click', closeThanksBox)
-}
-
 window.onload = function() {
     let versionEl = document.getElementById('version');
     versionEl.innerHTML = "v" + version;
@@ -161,11 +88,6 @@ window.onload = function() {
     $('section.clients .filter button').on('click', function(e) {
         filterClients(e.target.value, $(this));
     })
-
-    $(window).resize(() => clientsCarousel(false));
-    clientsCarousel(true);
-
-    setupForm();
 
     setupHero();
 

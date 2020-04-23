@@ -21,7 +21,8 @@
         crossorigin="anonymous"
         data-auto-replace-svg="nest"></script>
     <!-- Lazysizes -->
-    <script src="lazysizes.min.js" async=""></script>
+    <script src="js/lazysizes.min.js" async=""></script>
+    <script src="js/ls.unveilhooks.min.js" async=""></script>
     <!-- AOS (Animate On Scroll Library) -->
     <link rel="preload" href="https://unpkg.com/aos@2.3.1/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"></noscript>
@@ -33,7 +34,7 @@
     <!-- Preloads CSS -->
     <link rel="preload" href="styles/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="styles/styles.css"></noscript>
-    <script src="loadcss.js"></script>
+    <script src="js/loadcss.js"></script>
 </head>
 <body>
     <a href="#servicos" class="m-skip-link">Pular para o conteúdo principal.</a>
@@ -274,7 +275,7 @@
                 </ul>
                 <p class="subtitle">
                     Para sanitários e outros usos clique
-                    <a href="./outros.html">aqui</a>
+                    <a href="./outros.html"><span class="visually-hidden">(Ir para outros usos)</span>aqui</a>
                 </p>
             </div>
         </section>
@@ -294,6 +295,7 @@
                 </ul>
             </div>
             <ul class="carousel">
+                <div class="lazyload" data-script="js/clients-carousel.js"></div>
                 <li class="main selected">
                     <picture>
                         <source
@@ -331,8 +333,7 @@
                             sizes="900px"
                             data-srcset="assets/clients/main-2-900.png 900w">
                         <img
-                            class="reverse"
-                            class="lazyload"
+                            class="lazyload reverse"
                             data-src="assets/clients/main-2-1920.png"
                             alt="Clientes Principais 2">
                     </picture>
@@ -374,8 +375,7 @@
                             sizes="900px"
                             data-srcset="assets/clients/construction-2-900.png 900w">
                         <img
-                            class="reverse"
-                            class="lazyload"
+                            class="lazyload reverse"
                             data-src="assets/clients/construction-2-1920.png"
                             alt="Clientes da Construção Civil 2">
                     </picture>
@@ -480,8 +480,7 @@
                             sizes="900px"
                             data-srcset="assets/clients/other-2-900.png 900w">
                         <img
-                            class="reverse"
-                            class="lazyload"
+                            class="lazyload reverse"
                             data-src="assets/clients/other-2-1920.png"
                             alt="Outros Clientes 2">
                     </picture>
@@ -502,6 +501,7 @@
                 <p class="subtitle">
                     Preencha nosso formulário ou entre em contato direto conosco:
                 </p>
+                <div class="lazyload" data-script="js/setup-form.js"></div>
                 <form name="contact" method="POST" netlify-honeypot="bot" data-netlify="true" data-aos="fade-up">
                     <div class="left-side">
                         <label class="bot">Don’t fill this out if you're human: <input name="bot"/></label>
@@ -562,5 +562,5 @@
         <p id="version" class="version"></p>
     </footer>
 </body>
-<script defer src="index.js"></script>
+<script defer src="js/index.js"></script>
 </html>
