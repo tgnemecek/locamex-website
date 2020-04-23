@@ -55,7 +55,7 @@ function generate(data) {
         let htmlString = readTemplate();
         let newString = replace(htmlString, category);
         console.log(newString);
-        fs.writeFileSync(category.url, newString);
+        fs.writeFileSync("build/" + category.url, newString);
     })
 }
 

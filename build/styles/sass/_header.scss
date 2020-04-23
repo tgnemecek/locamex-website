@@ -1,0 +1,132 @@
+header {
+    min-height: 710px;
+    height: 100vh;
+    position: relative;
+    text-align: center;
+    @include bleed;
+    .img-slideshow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: black;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            object-fit: cover;
+            opacity: 0;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(39, 39, 39, 0.5);
+        }
+    }
+    .content {
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @include wrapper;
+    }
+    .logo {
+        max-width: 80%;
+        width: 500px;
+    }
+    .subtitle {
+        margin: 2rem 0;
+        font-style: italic;
+        color: white;
+        text-align: center;
+    }
+    .buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        .services {
+            @include primary-button;
+        }
+        .quote {
+            @include secondary-button;
+        }
+    }
+    .navigation-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        text-align: right;
+        z-index: 10;
+        transition: background-color 0.3s;
+        nav {
+            @include wrapper;
+            position: relative;
+        }
+        .nav-logo-wrapper {
+            @include wrapper;
+            position: relative;
+        }
+        .nav-logo {
+            position: absolute;
+            top: 15px;
+            text-align: left;
+            p:first-child {
+                font-size: 1.3rem;
+            }
+            p:nth-child(2) {
+                font-size: 0.6rem;
+            }
+        }
+        .menu-bars {
+            font-size: 2rem;
+            padding-top: 1rem;
+            display: none;
+        }
+        ul {
+            display: flex;
+            justify-content: flex-end;
+            transition: right 0.3s;
+        }
+        .menu-bars:hover + ul, ul:hover {
+            right: 0;
+        }
+        li {
+            padding: 1rem 0 0 1.4rem;
+        }
+        a {
+            line-height: 2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+        }
+        a, p, i {
+            font-weight: 600;
+            color: white;
+            transition: color 0.3s;
+        }
+    }
+}
+
+header.category {
+    height: 80px;
+    min-height: 80px;
+    .navigation-wrapper {
+        background-color: rgba(255, 255, 255, 0.95);
+        p, a, i {
+            color: black;
+        }
+    }
+}

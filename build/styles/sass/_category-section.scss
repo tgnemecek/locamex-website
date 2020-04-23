@@ -1,0 +1,71 @@
+section.category {
+    padding-top: 0;
+    .img-container {
+        @include wrapper;
+        position: relative;
+        height: 600px;
+        figure {
+            opacity: 0;
+        }
+        figcaption {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            margin-left: 10px;
+            padding: 0.5rem;
+            background-color: $primary-color;
+            z-index: 1;
+            p {
+                color: white;
+                text-align: right;
+            }
+        }
+        img {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border: 10px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,.4);
+        }
+        .controls {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 80px 80px 80px;
+            justify-content: center;
+            z-index: 10;
+            button {
+                color: white;
+                background-color: black;
+            }
+        }
+    }
+    h1 {
+        color: $dark-gray;
+        margin: 0.5rem 0 2rem 0;
+    }
+    .main-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+        li:first-child {
+            grid-row-end: span 2;
+        }
+        > li {
+            list-style: circle;
+        }
+    }
+    .sub-list > li {
+        list-style: square;
+        margin-left: 1rem;
+    }
+    .content > a {
+        @include primary-button;
+        display: block;
+        width: 300px;
+        margin: 40px auto 0 auto;
+    }
+}

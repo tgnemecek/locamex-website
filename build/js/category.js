@@ -1,24 +1,3 @@
-function changeNavBar() {
-    let scrollY = this.scrollY;
-    let bar = $('header .navigation-wrapper');
-    if (scrollY) {
-        bar.css({
-            backgroundColor: 'rgba(255, 255, 255, 0.95)'
-        })
-        bar.find('p, a, i').css({
-            color: 'black'
-        })
-
-    } else {
-        bar.css({
-            backgroundColor: 'transparent'
-        })
-        bar.find('p, a, i').css({
-            color: 'white'
-        })
-    }
-}
-
 class SlideShow {
     constructor() {
         this.images = $('.img-container figure');
@@ -97,7 +76,5 @@ class SlideShow {
 }
 
 window.onload = function() {
-    $(window).scroll(changeNavBar);
-    changeNavBar();
     let slideshow = new SlideShow();
 }

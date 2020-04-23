@@ -1,0 +1,18 @@
+footer {
+    background-color: $dark-gray;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    p {
+        font-size: 0.7rem;
+        color: $gray;
+    }
+    .version {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin: 15px;
+        font-style: italic;
+    }
+}
