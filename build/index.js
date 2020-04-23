@@ -7,7 +7,7 @@ function filterClients(name, button) {
     let toHide = $('section.clients .carousel > li.selected').not(`.${name}`);
 
     let toShow = $(`section.clients .carousel > .${name}`);
-debugger;
+
     toHide.find('picture').animate({
         height: 0,
         opacity: 0
@@ -26,38 +26,7 @@ debugger;
 
     toShow.addClass('selected');
     toHide.removeClass('selected');
-
-    // $('section.clients .carousel > li').not(`.${name}`)
-    //     .removeClass('selected');
-    // $(`section.clients .carousel > .${name}`)
-    //     .addClass('selected');
 }
-
-// function clientsCarouselSetup() {
-//     let duration = 20000;
-//     function animate(jquery, inverse) {
-//         let width = jquery.innerWidth();
-//         let initLeft = inverse ? -width/2 : 0;
-        
-//         jquery.css({ left: initLeft });
-
-//         jquery.animate({
-//             left: inverse ? 0 : -width/2
-//         }, {
-//             duration,
-//             easing: 'linear',
-//             done: () => {
-//                 jquery.css({ left: initLeft });
-//                 animate(jquery, inverse);
-//             }
-//         })
-//     }
-//     $('.carousel img').each(function(i) {
-//         $(this).stop();
-//         let inverse = $(this).hasClass('inverse');
-//         animate($(this), inverse);
-//     })
-// }
 
 function clientsCarousel(firstSetup) {
     let images = $('section.clients .carousel img');
