@@ -89,14 +89,15 @@ window.onload = function() {
     $(window).scroll(changeNavBar);
     changeNavBar();
 
-    $('#test-api').on('click', function(e) {
-        let file = $('#test-file').val();
-        let filename = file.split('\\').pop();
+    $('#test-file').on('change', function(e) {
+        let file = e.target.files[0];
+        // let filename = file.split('\\').pop();
         console.log(file);
 
         let reader = new FileReader();
 
         reader.onloadend = () => {
+            console.log('read!');
             $.ajax({
                 url: ".netlify/functions/file-uploader",
                 context: document.body,
