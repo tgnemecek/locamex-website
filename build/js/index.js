@@ -88,4 +88,25 @@ window.onload = function() {
 
     $(window).scroll(changeNavBar);
     changeNavBar();
+
+    $('#test-api').on('click', function(e) {
+        $.ajax({
+            url: ".netlify/functions/file-uploader",
+            context: document.body,
+            data: {
+                name: "thiago",
+                lastName: "nemecek",
+                type: "person"
+            },
+            success: function(data) {
+                $('#test-result').html("done!");
+                console.log(data);
+            },
+            error: function(a, type, error) {
+                $('#test-result').html("error!");
+                console.log(type);
+                console.log(error);
+            }
+        });
+    })
 }
