@@ -99,9 +99,15 @@ window.onload = function() {
         reader.onloadend = () => {
             console.log('read!');
             $.ajax({
-                url: ".netlify/functions/file-uploader",
+                url: "https://cranky-wilson-c6c4bd.netlify.app/.netlify/functions/file-uploader",
                 context: document.body,
-                data: reader.result,
+                headers: {
+                    "Access-Control-Allow-Origin": "*"
+                },
+                crossDomain: true,
+                data: {
+                    buffer: "reader.result"
+                },
                 success: function(data) {
                     $('#test-result').html("done!");
                     console.log(data);

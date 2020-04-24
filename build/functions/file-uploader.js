@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-var Buffer = require( "buffer" ).Buffer;
+const Buffer = require( "buffer" ).Buffer;
 
 function parseBody( body, isBase64Encoded ) {
 	let normalizedBody = isBase64Encoded
@@ -17,7 +17,8 @@ exports.handler = function(event, context, callback) {
     console.log(context);
 
     console.log("Getting data.");
-    let Body = parseBody( event.body, event.isBase64Encoded );
+    let Body = Buffer.from( event.body.buffer, "base64" ).toString( "utf8" );
+    // let Body = parseBody( event.body, event.isBase64Encoded );
 
     console.log("Generating s3 object.");
     const s3 = new AWS.S3({
