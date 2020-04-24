@@ -90,23 +90,29 @@ window.onload = function() {
     changeNavBar();
 
     $('#test-api').on('click', function(e) {
-        $.ajax({
-            url: ".netlify/functions/file-uploader",
-            context: document.body,
-            data: {
-                name: "thiago",
-                lastName: "nemecek",
-                type: "person"
-            },
-            success: function(data) {
-                $('#test-result').html("done!");
-                console.log(data);
-            },
-            error: function(a, type, error) {
-                $('#test-result').html("error!");
-                console.log(type);
-                console.log(error);
-            }
-        });
+        let file = $('#test-file').val();
+        let filename = file.split('\\').pop();
+        console.log(file);
+
+        let reader = new FileReader();
+
+        reader.onloadend = () => {
+            $.ajax({
+                url: ".netlify/functions/file-uploader",
+                context: document.body,
+                data: reader.result,
+                success: function(data) {
+                    $('#test-result').html("done!");
+                    console.log(data);
+                },
+                error: function(a, type, error) {
+                    $('#test-result').html("error!");
+                    console.log(type);
+                    console.log(error);
+                }
+            });
+        }
+
+        reader.readAsDataURL(file);
     })
 }

@@ -1,4 +1,13 @@
-const AWS = require('aws-sdk')
+const AWS = require('aws-sdk');
+var Buffer = require( "buffer" ).Buffer;
+
+function parseBody( body, isBase64Encoded ) {
+	let normalizedBody = isBase64Encoded
+		? fromBase64( body )
+		: body
+	;
+	return( JSON.parse( normalizedBody ) );
+}
 
 exports.handler = function(event, context, callback) {
     console.log("Function called");
@@ -8,7 +17,7 @@ exports.handler = function(event, context, callback) {
     console.log(context);
 
     console.log("Getting data.");
-    let name = event.queryStringParameters.name.toUpperCase();
+    let Body = parseBody( event.body, event.isBase64Encoded );
 
     console.log("Generating s3 object.");
     const s3 = new AWS.S3({
@@ -17,16 +26,14 @@ exports.handler = function(event, context, callback) {
       })
 
     let Bucket = "locamex-website";
-    let Key = "bbb.json";
+    let Key = "file-uploads/ccc.jpg";
 
     console.log("Running PUT operation.");
     s3.putObject({
         Bucket,
         Key,
-        ContentType: 'application/json',
-        Body: JSON.stringify({
-            name
-        }),
+        ContentType: 'image/jpeg',
+        Body
     }, (err, data) => {
         if (err) {
             console.log("Operation error:");
@@ -38,9 +45,7 @@ exports.handler = function(event, context, callback) {
             console.log(data);
             callback(null, {
                 statusCode: 200,
-                body: JSON.stringify({
-                    name
-                })
+                body: Body
             });
         }
     })
