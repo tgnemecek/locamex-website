@@ -22,7 +22,8 @@ function setupForm() {
         if (!errors) {
             e.preventDefault();
             e.stopPropagation();
-            $.post(form.attr("action"), form.serialize()).then(function() {
+            $.post(form.attr("action"), form.serialize()).then(function(a, b, c) {
+                console.log(a, b, c);
                 $('.thanks-box').css({ display: 'flex' });
             });
         }
