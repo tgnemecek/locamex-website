@@ -101,7 +101,7 @@ window.onload = function() {
             $.ajax({
                 url: "https://cranky-wilson-c6c4bd.netlify.app/.netlify/functions/file-uploader",
                 context: document.body,
-                // method: "POST",
+                method: "POST",
                 headers: {
                     "Access-Control-Allow-Origin": "*"
                 },
