@@ -1,5 +1,5 @@
 const AWS = require('aws-sdk');
-import querystring from "querystring";
+const querystring = require("querystring");
 const Buffer = require( "buffer" ).Buffer;
 
 function parseBody( body, isBase64Encoded ) {
