@@ -17,7 +17,8 @@ exports.handler = function(event, context, callback) {
     console.log(context);
 
     console.log("Getting data.");
-    let Body = Buffer.from( event.body.buffer, "base64" ).toString( "utf8" );
+    let dataURI = event.queryStringParameters.buffer;
+    let Body = Buffer.from( dataURI, "base64" ).toString( "utf8" );
     // let Body = parseBody( event.body, event.isBase64Encoded );
 
     console.log("Generating s3 object.");
