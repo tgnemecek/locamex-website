@@ -89,38 +89,46 @@ window.onload = function() {
     $(window).scroll(changeNavBar);
     changeNavBar();
 
-    $('#test-file').on('change', function(e) {
-        let file = e.target.files[0];
-        // let filename = file.split('\\').pop();
-        console.log(file);
+    // $('#test-api').on('click', function(e) {
+    //     let file = $('#test-file').prop('files')[0];
+    //     if (file) {
+    //         let filename = file.name;
+    //         if (checkFileType(file)) {
+    //             reader.onloadend = () => {           
+    //                 $.ajax({
+    //                     url: "https://cranky-wilson-c6c4bd.netlify.app/.netlify/functions/file-uploader",
+    //                     context: document.body,
+    //                     method: "POST",
+    //                     headers: {
+    //                         "Access-Control-Allow-Origin": "*"
+    //                     },
+    //                     crossDomain: true,
+    //                     data: {
+    //                         buffer: reader.result
+    //                     },
+    //                     success: function(data) {
+    //                         $('#test-result').html("done!");
+    //                         console.log(data);
+    //                     },
+    //                     error: function(h, type, error) {
+    //                         alert("Erro de Servidor!")
+    //                         console.log(type);
+    //                         console.log(error);
+    //                     }
+    //                 });
+    //             }
+    //             reader.readAsDataURL(file);
+    //         }
+    //     }
 
-        let reader = new FileReader();
+    // })
 
-        reader.onloadend = () => {
-            console.log('read!');
-            $.ajax({
-                url: "https://cranky-wilson-c6c4bd.netlify.app/.netlify/functions/file-uploader",
-                context: document.body,
-                method: "POST",
-                headers: {
-                    "Access-Control-Allow-Origin": "*"
-                },
-                crossDomain: true,
-                data: {
-                    buffer: reader.result
-                },
-                success: function(data) {
-                    $('#test-result').html("done!");
-                    console.log(data);
-                },
-                error: function(a, type, error) {
-                    $('#test-result').html("error!");
-                    console.log(type);
-                    console.log(error);
-                }
-            });
-        }
+    // $('#test-file').on('change', function(e) {
+    //     let file = e.target.files[0];
+    //     let filename = file.name;
 
-        reader.readAsDataURL(file);
-    })
+    //     let reader = new FileReader();
+    //     console.log(file);
+
+    // })
 }
