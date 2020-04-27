@@ -9,7 +9,7 @@ function setupForm() {
             alert(`O arquivo não pode exceder ${maxSize} MB.`)
         }
     })
-    form.find('.submit').on('click', function(e) {
+    form.find('#submit').on('click', function(e) {
         let errors = 0;
         let data = {};
         form.find('input[required], textarea[required]').each(function() {
@@ -23,6 +23,8 @@ function setupForm() {
         if (!errors) {
             e.preventDefault();
             e.stopPropagation();
+            data.token = reCaptchaToken;
+
             let file = form.find('#file').prop('files')[0];
             if (file) {
                 let filename = file.name;

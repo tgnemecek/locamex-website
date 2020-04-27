@@ -75,9 +75,18 @@ function changeNavBar() {
     }
 }
 
+let reCaptchaToken = "";
+
 window.onload = function() {
     AOS.init({
         duration: 800
+    });
+
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LcvNcIUAAAAAKWPRSTrrSfvyfnqOqGTW2pnpCju', {action: '/'})
+        .then(function(res) {
+            reCaptchaToken = res;
+        });
     });
 
     $('section.clients .filter button').on('click', function(e) {
@@ -89,68 +98,4 @@ window.onload = function() {
     $(window).scroll(changeNavBar);
     changeNavBar();
 
-    // $('#test-api').on('click', function(e) {
-    //     $.ajax({
-    //         url: ".netlify/functions/send-email",
-    //         context: document.body,
-    //         method: "POST",
-    //         headers: {
-    //             "Access-Control-Allow-Origin": "*"
-    //         },
-    //         crossDomain: true,
-    //         data: {},
-    //         success: function(data) {
-    //             $('#test-result').html("done!");
-    //             console.log(data);
-    //         },
-    //         error: function(h, type, error) {
-    //             alert("Erro de Servidor!")
-    //             console.log(type);
-    //             console.log(error);
-    //         }
-    //     });
-    // })
-
-    // $('#test-api').on('click', function(e) {
-    //     let file = $('#test-file').prop('files')[0];
-    //     if (file) {
-    //         let filename = file.name;
-    //         if (checkFileType(file)) {
-    //             reader.onloadend = () => {           
-    //                 $.ajax({
-    //                     url: "https://cranky-wilson-c6c4bd.netlify.app/.netlify/functions/file-uploader",
-    //                     context: document.body,
-    //                     method: "POST",
-    //                     headers: {
-    //                         "Access-Control-Allow-Origin": "*"
-    //                     },
-    //                     crossDomain: true,
-    //                     data: {
-    //                         buffer: reader.result
-    //                     },
-    //                     success: function(data) {
-    //                         $('#test-result').html("done!");
-    //                         console.log(data);
-    //                     },
-    //                     error: function(h, type, error) {
-    //                         alert("Erro de Servidor!")
-    //                         console.log(type);
-    //                         console.log(error);
-    //                     }
-    //                 });
-    //             }
-    //             reader.readAsDataURL(file);
-    //         }
-    //     }
-
-    // })
-
-    // $('#test-file').on('change', function(e) {
-    //     let file = e.target.files[0];
-    //     let filename = file.name;
-
-    //     let reader = new FileReader();
-    //     console.log(file);
-
-    // })
 }

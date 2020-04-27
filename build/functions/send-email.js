@@ -1,6 +1,7 @@
 const AWS = require('aws-sdk');
 const querystring = require("querystring");
 const moment = require('moment-timezone');
+const fetch = require('node-fetch');
 const uploadFile = require('./upload-file.js');
 
 function getStyle(element) {
@@ -68,114 +69,128 @@ function getStyle(element) {
 exports.handler = function (event, context, callback) {
   try {
     let data = querystring.parse(event.body);
-    let name = data.name;
-    let company = data.company;
-    let email = data.email;
-    let phone = data.phone;
-    let message = data.message;
-    let messageHTML = message.replace(/\r?\n/g, '<br />');
-    let date = moment().tz('America/Sao_Paulo');
-    let file = data.file;
-    let code = new Date().getTime() + "-";
-    let filename = data.filename ? code + data.filename : undefined;
-
-    if (file) {
-      uploadFile(file, filename, sendEmail);
-    } else sendEmail();
-
-    function sendEmail(err, fileURL) {
-      if (err) {
-        console.log(err);
-        callback(err);
-        return;
-      }
-
-      let html = `
-      <div style="${getStyle("main")}" class="main">
-        <div style="${getStyle("inner")}">
-          <img src="https://www.locamex.com.br/assets/logo-email.png" height="150" style="${getStyle("logo")}"/>
-          <div>Data: ${date.format("DD-MM-YYYY")} | Horário: ${date.format("HH:MM")}</div>
-          <div style="${getStyle("line")}"></div>
-          <h2 style="${getStyle("h2")}">Dados Informados</h2>
-          <ul style="${getStyle("ul")}">
-            <li style="${getStyle("li")}">Nome: ${name}</li>
-            <li style="${getStyle("li")}">Empresa: ${company}</li>
-            <li style="${getStyle("li")}">Email: ${email}</li>
-            <li style="${getStyle("li")}">Telefone: ${phone}</li>
-          </ul>
-          <div style="${getStyle("line")}"></div>
-          <h2 style="${getStyle("h2")}">Descrição do Projeto</h2>
-          <div>
-              ${messageHTML}
-          </div>
-          <div style="${getStyle("line")}"></div>
-          ${fileURL ?
-            `<h2 style="${getStyle("h2")}">Arquivo Enviado</h2>
-            <a href="${fileURL}">${fileURL}</a>
-            <div style="${getStyle("line")}"></div>`
-          : ""}
-          <div style="${getStyle("footer")}">
-          LOCAMEX - Containers Personalizados<br/>
-          <a href="https://www.locamex.com.br">www.locamex.com.br</a><br/>
-          <a href="mailto:engenharia@locamex.com.br">engenharia@locamex.com.br</a><br/>
-          (11) 5532-0790 / 5533-5614 / 5031-4762 / 3132-7175<br/>
-          São Paulo - SP
-        </div>
-      </div>
-    `
-
-    // Set the region
-    AWS.config.update({
-      region: 'us-east-1'
-    });
-
-    // Create sendEmail params 
-    let params = {
-      Destination: {
-        CcAddresses: [],
-        ToAddresses: ['thiago@locamex.com.br']
-      },
-      Message: {
-        Body: {
-          Html: {
-            Charset: "UTF-8",
-            Data: html
-          },
-          Text: {
-            Charset: "UTF-8",
-            Data: `LOCAMEX - Formulário de Contato. Mensagem: ${message}. Nome: ${name}. Empresa: ${company}. Email: ${email}. Telefone: ${phone}.`
-          }
-        },
-        Subject: {
-          Charset: 'UTF-8',
-          Data: 'Formulário de Contato - Locamex'
-        }
-      },
-      Source: 'Contato <tgnemecek@gmail.com>',
-      ReplyToAddresses: ['tgnemecek@gmail.com'],
-    };
-
-    // Create the promise and SES service object
-    let sendPromise = new AWS.SES({
-      apiVersion: '2010-12-01',
-      accessKeyId: process.env.AWS_ID,
-      secretAccessKey: process.env.AWS_KEY
-    }).sendEmail(params).promise();
-
-    // Handle promise's fulfilled/rejected states
-    sendPromise
-      .then((res) => {
-        console.log(res.MessageId);
-        callback(null, {
-          statusCode: 200,
-          body: res.MessageId
-        });
-      })
-      .catch((err) => {
-        console.error(err, err.stack);
-        callback(err);
-      });
+    if (data.bot) {
+      callback(null, true);
+      return;
     }
+
+    let token = data.token;
+    let secret = process.env.RECAPTCHA_SECRET_KEY;
+    let reCaptchaURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`;
+
+    fetch(reCaptchaURL, {method: "POST"})
+      .then(res => res.json())
+      .then(body => console.log(body));
+
+
+    // let name = data.name;
+    // let company = data.company;
+    // let email = data.email;
+    // let phone = data.phone;
+    // let message = data.message;
+    // let messageHTML = message.replace(/\r?\n/g, '<br />');
+    // let date = moment().tz('America/Sao_Paulo');
+    // let file = data.file;
+    // let code = new Date().getTime() + "-";
+    // let filename = data.filename ? code + data.filename : undefined;
+
+    // if (file) {
+    //   uploadFile(file, filename, sendEmail);
+    // } else sendEmail();
+
+    // function sendEmail(err, fileURL) {
+    //   if (err) {
+    //     console.log(err);
+    //     callback(err);
+    //     return;
+    //   }
+
+    //   let html = `
+    //   <div style="${getStyle("main")}" class="main">
+    //     <div style="${getStyle("inner")}">
+    //       <img src="https://www.locamex.com.br/assets/logo-email.png" height="150" style="${getStyle("logo")}"/>
+    //       <div>Data: ${date.format("DD-MM-YYYY")} | Horário: ${date.format("HH:MM")}</div>
+    //       <div style="${getStyle("line")}"></div>
+    //       <h2 style="${getStyle("h2")}">Dados Informados</h2>
+    //       <ul style="${getStyle("ul")}">
+    //         <li style="${getStyle("li")}">Nome: ${name}</li>
+    //         <li style="${getStyle("li")}">Empresa: ${company}</li>
+    //         <li style="${getStyle("li")}">Email: ${email}</li>
+    //         <li style="${getStyle("li")}">Telefone: ${phone}</li>
+    //       </ul>
+    //       <div style="${getStyle("line")}"></div>
+    //       <h2 style="${getStyle("h2")}">Descrição do Projeto</h2>
+    //       <div>
+    //           ${messageHTML}
+    //       </div>
+    //       <div style="${getStyle("line")}"></div>
+    //       ${fileURL ?
+    //         `<h2 style="${getStyle("h2")}">Arquivo Enviado</h2>
+    //         <a href="${fileURL}">${fileURL}</a>
+    //         <div style="${getStyle("line")}"></div>`
+    //       : ""}
+    //       <div style="${getStyle("footer")}">
+    //       LOCAMEX - Containers Personalizados<br/>
+    //       <a href="https://www.locamex.com.br">www.locamex.com.br</a><br/>
+    //       <a href="mailto:engenharia@locamex.com.br">engenharia@locamex.com.br</a><br/>
+    //       (11) 5532-0790 / 5533-5614 / 5031-4762 / 3132-7175<br/>
+    //       São Paulo - SP
+    //     </div>
+    //   </div>
+    // `
+
+    // // Set the region
+    // AWS.config.update({
+    //   region: 'us-east-1'
+    // });
+
+    // // Create sendEmail params 
+    // let params = {
+    //   Destination: {
+    //     CcAddresses: [],
+    //     ToAddresses: ['thiago@locamex.com.br']
+    //   },
+    //   Message: {
+    //     Body: {
+    //       Html: {
+    //         Charset: "UTF-8",
+    //         Data: html
+    //       },
+    //       Text: {
+    //         Charset: "UTF-8",
+    //         Data: `LOCAMEX - Formulário de Contato. Mensagem: ${message}. Nome: ${name}. Empresa: ${company}. Email: ${email}. Telefone: ${phone}.`
+    //       }
+    //     },
+    //     Subject: {
+    //       Charset: 'UTF-8',
+    //       Data: 'Formulário de Contato - Locamex'
+    //     }
+    //   },
+    //   Source: 'Contato <tgnemecek@gmail.com>',
+    //   ReplyToAddresses: ['tgnemecek@gmail.com'],
+    // };
+
+    // // Create the promise and SES service object
+    // let sendPromise = new AWS.SES({
+    //   apiVersion: '2010-12-01',
+    //   accessKeyId: process.env.AWS_ID,
+    //   secretAccessKey: process.env.AWS_KEY
+    // }).sendEmail(params).promise();
+
+    // // Handle promise's fulfilled/rejected states
+    // sendPromise
+    //   .then((res) => {
+    //     console.log(res.MessageId);
+    //     callback(null, {
+    //       statusCode: 200,
+    //       body: res.MessageId
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.error(err, err.stack);
+    //     callback(err);
+    //   });
+    // }
   } catch (err) {
     console.log(err);
     callback(err);
