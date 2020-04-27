@@ -70,6 +70,7 @@ exports.handler = function (event, context, callback) {
   try {
     let data = querystring.parse(event.body);
     if (data.bot) {
+      console.log('honeypot detected');
       callback(null, true);
       return;
     }
@@ -80,7 +81,10 @@ exports.handler = function (event, context, callback) {
 
     fetch(reCaptchaURL, {method: "POST"})
       .then(res => res.json())
-      .then(body => console.log(body));
+      .then(body => {
+        console.log(body);
+        callback(null, body);
+      });
 
 
     // let name = data.name;
