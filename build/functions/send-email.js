@@ -1,53 +1,54 @@
-const nodemailer = require('nodemailer');
+var AWS = require('aws-sdk');
 
-exports.handler = function(event, context, callback) {
+exports.handler = function (event, context, callback) {
   try {
-    let transporter = nodemailer.createTransport({
-      // host: "smtp.locamex.com.br",
-      host: "mail.www15.locaweb.com.br",
-      port: 587,
-      secure: true,
-      auth: {
-        user: process.env.EMAIL_ADDRESS,
-        pass: process.env.EMAIL_PASSWORD
-      },
-      tls: {
-        rejectUnauthorized: false // Remove after domain setup
-      }
-    })
-  
-    var text = 'Email body goes here';
-  
-    var mailOptions = {
-      from: 'tgnemecek@yahoo.com.br',
-      to: 'thiago@locamex.com.br',
-      bcc: '',
-      subject: 'Test subject',
-      text: text
-    };
-  
-    transporter.sendMail(mailOptions, function(error, info) {
-      if (error) {
-        console.log(error);
-        const response = {
-          statusCode: 500,
-          body: JSON.stringify({
-            error: error.message,
-          }),
-        };
-        callback(null, response);
-      }
-      const response = {
-        statusCode: 200,
-        body: JSON.stringify({
-          message: `Email processed succesfully!`
-        }),
-      };
-      callback(null, response);
+    // Set the region
+    AWS.config.update({
+      region: 'us-east-1'
     });
-  }
 
-  catch(err) {
+    // Create sendEmail params 
+    let params = {
+      Destination: {
+        CcAddresses: [],
+        ToAddresses: ['tgnemecek@gmail.com']
+      },
+      Message: {
+        Body: {
+          Html: {
+            Charset: "UTF-8",
+            Data: "HTML_FORMAT_BODY"
+          },
+          Text: {
+            Charset: "UTF-8",
+            Data: "TEXT_FORMAT_BODY"
+          }
+        },
+        Subject: {
+          Charset: 'UTF-8',
+          Data: 'Test email'
+        }
+      },
+      Source: 'tgnemecek@gmail.com',
+      ReplyToAddresses: ['tgnemecek@gmail.com'],
+    };
+
+    // Create the promise and SES service object
+    let sendPromise = new AWS.SES({
+      apiVersion: '2010-12-01',
+      accessKeyId: process.env.AWS_ID,
+      secretAccessKey: process.env.AWS_KEY
+    }).sendEmail(params).promise();
+
+    // Handle promise's fulfilled/rejected states
+    sendPromise.then(
+      function (data) {
+        console.log(data.MessageId);
+      }).catch(
+      function (err) {
+        console.error(err, err.stack);
+      });
+  } catch (err) {
     console.log(err);
     callback(err);
   }
