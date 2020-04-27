@@ -2,7 +2,6 @@ const nodemailer = require('nodemailer');
 
 exports.handler = function(event, context, callback) {
   try {
-
     let transporter = nodemailer.createTransport({
       host: "smtp.locamex.com.br",
       port: 587,
@@ -25,6 +24,7 @@ exports.handler = function(event, context, callback) {
   
     transporter.sendMail(mailOptions, function(error, info) {
       if (error) {
+        console.log(error);
         const response = {
           statusCode: 500,
           body: JSON.stringify({
@@ -42,7 +42,9 @@ exports.handler = function(event, context, callback) {
       callback(null, response);
     });
   }
+
   catch(err) {
+    console.log(err);
     callback(err);
   }
 }
