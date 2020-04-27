@@ -22,8 +22,7 @@ function setupForm() {
         if (!errors) {
             e.preventDefault();
             e.stopPropagation();
-            $.post(form.attr("action"), form.serialize()).then(function(a, b, c) {
-                console.log(a, b, c);
+            $.post(".netlify/functions/send-email", form.serialize()).then(function() {
                 $('.thanks-box').css({ display: 'flex' });
             });
         }
