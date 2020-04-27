@@ -16,7 +16,7 @@ module.exports = function(file, filename, callback) {
       })
 
     let Bucket = "locamex-website";
-    let Key = "file-uploads/ddd.jpg";
+    let Key = `file-uploads/${filename}`;
 
     console.log("Running PUT operation.");
     s3.putObject({

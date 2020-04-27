@@ -36,8 +36,7 @@ function setupForm() {
             } else {
                 delete data.file;
                 delete data.filename;
-                console.log(data);
-                // sendEmail(data);
+                sendEmail(data);
             }
         }
     })

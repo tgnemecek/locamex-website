@@ -76,13 +76,20 @@ exports.handler = function (event, context, callback) {
     let messageHTML = message.replace(/\r?\n/g, '<br />');
     let date = moment().tz('America/Sao_Paulo');
     let file = data.file;
-    let filename = data.filename;
+    let code = new Date().getTime() + "-";
+    let filename = data.filename ? code + data.filename : undefined;
 
     if (file) {
       uploadFile(file, filename, sendEmail);
     } else sendEmail();
 
-    function sendEmail(fileURL) {
+    function sendEmail(err, fileURL) {
+      if (err) {
+        console.log(err);
+        callback(err);
+        return;
+      }
+
       let html = `
       <div style="${getStyle("main")}" class="main">
         <div style="${getStyle("inner")}">
@@ -102,6 +109,11 @@ exports.handler = function (event, context, callback) {
               ${messageHTML}
           </div>
           <div style="${getStyle("line")}"></div>
+          ${fileURL ?
+            `<h2 style="${getStyle("h2")}">Arquivo Enviado</h2>
+            <a href="${fileURL}">${fileURL}</a>
+            <div style="${getStyle("line")}"></div>`
+          : ""}
           <div style="${getStyle("footer")}">
           LOCAMEX - Containers Personalizados<br/>
           <a href="https://www.locamex.com.br">www.locamex.com.br</a><br/>
@@ -151,12 +163,17 @@ exports.handler = function (event, context, callback) {
     }).sendEmail(params).promise();
 
     // Handle promise's fulfilled/rejected states
-    sendPromise.then(
-      function (data) {
-        console.log(data.MessageId);
-      }).catch(
-      function (err) {
+    sendPromise
+      .then((res) => {
+        console.log(res.MessageId);
+        callback(null, {
+          statusCode: 200,
+          body: res.MessageId
+        });
+      })
+      .catch((err) => {
         console.error(err, err.stack);
+        callback(err);
       });
     }
   } catch (err) {
