@@ -1,6 +1,69 @@
 const AWS = require('aws-sdk');
 const querystring = require("querystring");
 const moment = require('moment-timezone');
+import uploadFile from './upload-file.js';
+
+function getStyle(element) {
+  let style = {
+    h1: {
+      "font-family": "'Raleway', 'Arial', sans-serif",
+      "font-size": "40px",
+      "background-color": "#f7931b",
+      "padding": "25px",
+      "color": "white"
+    },
+    h2: {
+      "color":" #f7931b",
+      "font-size": "1.5em",
+      "margin": "3pt 0 5pt 0",
+      "font-weight": "bold"
+    },
+    logo: {
+      "margin": "auto",
+      "display": "block"
+    },
+    main: {
+      "font-family": "'Open Sans', 'Arial', sans-serif",
+      "font-size": "14px",
+      "border": "1px solid #cccccc",
+      "background-color": "#f9f9f9",
+      "padding": "0",
+      "margin": "auto",
+      "width": "100%",
+      "max-width": "700px",
+      "box-shadow": "3px 3px 5px grey"
+    },
+    inner: {
+      "margin": "auto",
+      "width": "100%",
+      "max-width": "600px",
+      "padding": "0 10px",
+    },
+    ul: {
+      "margin": "0"
+    },
+    li: {
+      "list-style": "none"
+    },
+    line: {
+      "width": "100%",
+      "border-top": "1px #666 dotted"
+    },
+    footer: {
+      "color": "grey",
+      "font-size": "0.9em",
+      "margin": "20px 0",
+      "text-align": "center"
+    }
+  }
+  if (!style[element]) return "";
+
+  let string = "";
+  for (key in style[element]) {
+    string += `${key}: ${style[element][key]}; `
+  }
+  return string;
+}
 
 exports.handler = function (event, context, callback) {
   try {
@@ -12,73 +75,18 @@ exports.handler = function (event, context, callback) {
     let message = data.message;
     let messageHTML = message.replace(/\r?\n/g, '<br />');
     let date = moment().tz('America/Sao_Paulo');
+    let file = data.file;
+    let filename = data.filename;
 
-    function getStyle(element) {
-      let style = {
-        h1: {
-          "font-family": "'Raleway', 'Arial', sans-serif",
-          "font-size": "40px",
-          "background-color": "#f7931b",
-          "padding": "25px",
-          "color": "white"
-        },
-        h2: {
-          "color":" #f7931b",
-          "font-size": "1.5em",
-          "margin": "3pt 0 5pt 0",
-          "font-weight": "bold"
-        },
-        logo: {
-          "margin": "auto",
-          "display": "block"
-        },
-        main: {
-          "font-family": "'Open Sans', 'Arial', sans-serif",
-          "font-size": "14px",
-          "border": "1px solid #cccccc",
-          "background-color": "#f9f9f9",
-          "padding": "0",
-          "margin": "auto",
-          "width": "100%",
-          "max-width": "700px",
-          "box-shadow": "3px 3px 5px grey"
-        },
-        inner: {
-          "margin": "auto",
-          "width": "100%",
-          "max-width": "600px",
-          "padding": "0 10px",
-        },
-        ul: {
-          "margin": "0"
-        },
-        li: {
-          "list-style": "none"
-        },
-        line: {
-          "width": "100%",
-          "border-top": "1px #666 dotted"
-        },
-        footer: {
-          "color": "grey",
-          "font-size": "0.9em",
-          "margin": "20px 0",
-          "text-align": "center"
-        }
-      }
-      if (!style[element]) return "";
+    if (file) {
+      uploadFile(file, filename, sendEmail);
+    } else sendEmail();
 
-      let string = "";
-      for (key in style[element]) {
-        string += `${key}: ${style[element][key]}; `
-      }
-      return string;
-    }
-
-    let html = `
+    function sendEmail(fileURL) {
+      let html = `
       <div style="${getStyle("main")}" class="main">
         <div style="${getStyle("inner")}">
-          <img src="/assets/logo-email.png" height="150" style="${getStyle("logo")}"/>
+          <img src="https://www.locamex.com.br/assets/logo-email.png" height="150" style="${getStyle("logo")}"/>
           <div>Data: ${date.format("DD-MM-YYYY")} | Horário: ${date.format("HH:MM")}</div>
           <div style="${getStyle("line")}"></div>
           <h2 style="${getStyle("h2")}">Dados Informados</h2>
@@ -150,6 +158,7 @@ exports.handler = function (event, context, callback) {
       function (err) {
         console.error(err, err.stack);
       });
+    }
   } catch (err) {
     console.log(err);
     callback(err);

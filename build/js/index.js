@@ -89,27 +89,27 @@ window.onload = function() {
     $(window).scroll(changeNavBar);
     changeNavBar();
 
-    $('#test-api').on('click', function(e) {
-        $.ajax({
-            url: ".netlify/functions/send-email",
-            context: document.body,
-            method: "POST",
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            },
-            crossDomain: true,
-            data: {},
-            success: function(data) {
-                $('#test-result').html("done!");
-                console.log(data);
-            },
-            error: function(h, type, error) {
-                alert("Erro de Servidor!")
-                console.log(type);
-                console.log(error);
-            }
-        });
-    })
+    // $('#test-api').on('click', function(e) {
+    //     $.ajax({
+    //         url: ".netlify/functions/send-email",
+    //         context: document.body,
+    //         method: "POST",
+    //         headers: {
+    //             "Access-Control-Allow-Origin": "*"
+    //         },
+    //         crossDomain: true,
+    //         data: {},
+    //         success: function(data) {
+    //             $('#test-result').html("done!");
+    //             console.log(data);
+    //         },
+    //         error: function(h, type, error) {
+    //             alert("Erro de Servidor!")
+    //             console.log(type);
+    //             console.log(error);
+    //         }
+    //     });
+    // })
 
     // $('#test-api').on('click', function(e) {
     //     let file = $('#test-file').prop('files')[0];

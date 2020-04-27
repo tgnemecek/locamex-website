@@ -10,15 +10,12 @@ function parseBody( body, isBase64Encoded ) {
 	return( JSON.parse( normalizedBody ) );
 }
 
-exports.handler = function(event, context, callback) {
+export default function uploadFile(file, filename, callback) {
     console.log("Function called");
     console.log("Event:");
-    console.log(event);
     
     console.log("Getting data.");
-    let data = querystring.parse(event.body);
-    let Body = new Buffer(data.buffer.replace(/^data:\w+\/\w+;base64,/, ""),'base64');
-    // let Body = parseBody( event.body, event.isBase64Encoded );
+    let Body = new Buffer(file.replace(/^data:\w+\/\w+;base64,/, ""),'base64');
 
     console.log("Generating s3 object.");
     const s3 = new AWS.S3({
