@@ -34,8 +34,7 @@ module.exports = function(file, filename, callback) {
             }
             if (data) {
                 console.log("Operation successful!");
-                console.log(data);
-                callback(null, data);
+                callback(null, data.Location);
             }
         })
     }
