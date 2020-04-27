@@ -8,7 +8,6 @@ function setupForm() {
             this.value = '';
             alert(`O arquivo não pode exceder ${maxSize} MB.`)
         }
-        console.log(e.target.files);
     })
     form.find('.submit').on('click', function(e) {
         let errors = 0;
@@ -24,6 +23,7 @@ function setupForm() {
         if (!errors) {
             e.preventDefault();
             e.stopPropagation();
+            let file = form.find('#file').prop('files')[0];
             if (file) {
                 let filename = file.name;
                 let reader = new FileReader();
@@ -33,7 +33,11 @@ function setupForm() {
                     sendEmail(data);
                 }
                 reader.readAsDataURL(file);
-            } else sendEmail(data);
+            } else {
+                delete data.file;
+                delete data.filename;
+                sendEmail(data);
+            }
         }
     })
     function sendEmail(data) {
