@@ -2,14 +2,6 @@ const AWS = require('aws-sdk');
 const querystring = require("querystring");
 const Buffer = require( "buffer" ).Buffer;
 
-function parseBody( body, isBase64Encoded ) {
-	let normalizedBody = isBase64Encoded
-		? fromBase64( body )
-		: body
-	;
-	return( JSON.parse( normalizedBody ) );
-}
-
 export default function uploadFile(file, filename, callback) {
     console.log("Function called");
     console.log("Event:");

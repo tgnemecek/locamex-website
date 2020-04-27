@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 const querystring = require("querystring");
 const moment = require('moment-timezone');
-import uploadFile from './upload-file.js';
+const uploadFile = require('./upload-file.js');
 
 function getStyle(element) {
   let style = {
