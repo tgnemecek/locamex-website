@@ -20,7 +20,7 @@ module.exports = function(file, filename, callback) {
         let Key = `file-uploads/${filename}`;
     
         console.log("Running PUT operation.");
-        s3.putObject({
+        s3.upload({
             Bucket,
             Key,
             ContentType: 'image/jpeg',
