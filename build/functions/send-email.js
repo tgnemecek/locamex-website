@@ -19,7 +19,7 @@ exports.handler = function(event, context, callback) {
   
     var mailOptions = {
       from: 'tgnemecek@yahoo.com.br',
-      to: 'thiago@locaweb.com.br',
+      to: 'thiago@locamex.com.br',
       bcc: '',
       subject: 'Test subject',
       text: text
