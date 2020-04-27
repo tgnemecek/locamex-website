@@ -36,7 +36,7 @@ function setupForm() {
                 reader.onloadend = () => {
                     data.file = reader.result;
                     data.filename = filename;
-                    getToken("submit-form").then((token) => {
+                    getToken("submitForm").then((token) => {
                         sendEmail({...data, token});
                     })
                     
@@ -45,7 +45,7 @@ function setupForm() {
             } else {
                 delete data.file;
                 delete data.filename;
-                getToken("submit-form").then((token) => {
+                getToken("submitForm").then((token) => {
                     sendEmail({...data, token});
                 })
             }

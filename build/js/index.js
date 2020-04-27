@@ -95,7 +95,7 @@ window.onload = function() {
     });
 
     grecaptcha.ready(function() {
-        getToken("page-load");
+        getToken("pageLoad");
     });
 
     $('section.clients .filter button').on('click', function(e) {
