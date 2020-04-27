@@ -2,7 +2,7 @@ const AWS = require('aws-sdk');
 const querystring = require("querystring");
 const Buffer = require( "buffer" ).Buffer;
 
-export default function uploadFile(file, filename, callback) {
+module.exports = function(file, filename, callback) {
     console.log("Function called");
     console.log("Event:");
     
