@@ -4,12 +4,31 @@ const querystring = require("querystring");
 exports.handler = function (event, context, callback) {
   try {
     let data = querystring.parse(event.body);
-    console.log(data);
     let name = data.name;
     let company = data.company;
     let email = data.email;
     let phone = data.phone;
     let message = data.message;
+
+    let html = `
+      <header>
+          <h1 style="font-family: 'Raleway', 'Arial', sans-serif; font-size: 40px; background-color: #f7931b; padding: 25px; color: white;">
+          LOCAMEX - Formulário de Contato
+          </h1>
+      </header>
+      <main style="font-family: 'Open Sans', 'Arial', sans-serif; font-size: 18px;">
+          <div>
+              ${message}
+          </div>
+          <ul>
+              <li>Nome: ${name}</li>
+              <li>Empresa: ${company}</li>
+              <li>Email: ${email}</li>
+              <li>Telefone: ${phone}</li>
+          </ul>
+      </main>
+    `
+
     // Set the region
     AWS.config.update({
       region: 'us-east-1'
@@ -25,11 +44,11 @@ exports.handler = function (event, context, callback) {
         Body: {
           Html: {
             Charset: "UTF-8",
-            Data: `${message} - ${phone} - ${name} - ${company}`
+            Data: html
           },
           Text: {
             Charset: "UTF-8",
-            Data: `<strong>${message} - ${phone} - ${name} - ${company}</strong>`
+            Data: `LOCAMEX - Formulário de Contato. Mensagem: ${message}. Nome: ${name}. Empresa: ${company}. Email: ${email}. Telefone: ${phone}.`
           }
         },
         Subject: {
@@ -37,7 +56,7 @@ exports.handler = function (event, context, callback) {
           Data: 'Formulário de Contato - Locamex'
         }
       },
-      Source: 'tgnemecek@gmail.com',
+      Source: 'Formulário de Contato <tgnemecek@gmail.com>',
       ReplyToAddresses: ['tgnemecek@gmail.com'],
     };
 
