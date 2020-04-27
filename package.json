@@ -8,7 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "prebuild": "cd build/functions && npm i"
+    "build": "cd build/functions && npm i"
   },
   "repository": {
     "type": "git",
