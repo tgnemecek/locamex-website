@@ -10,6 +10,7 @@ exports.handler = function (event, context, callback) {
     let email = data.email;
     let phone = data.phone;
     let message = data.message;
+    let messageHTML = message.replace(/\r?\n/g, '<br />');
 
     function getStyle(element) {
       let style = {
@@ -20,11 +21,32 @@ exports.handler = function (event, context, callback) {
           "padding": "25px",
           "color": "white"
         },
+        h2: {
+          "color":" #f7931b",
+          "margin": "3pt 0 5pt 0",
+          "font-weight": "bold"
+        },
         main: {
           "font-family": "'Open Sans', 'Arial', sans-serif",
-          "font-size": "18px"
+          "font-size": "16px",
+          "border": "1px solid #cccccc",
+          "margin": "0 10vw 0 10vw",
+          "background-color": "#f9f9f9",
+          "padding": "0 10% 20px 10%",
+          "box-shadow": "3px 3px 5px grey"
+        },
+        line: {
+          "width": "100%",
+          "border-top": "1px #666 dotted"
+        },
+        footer: {
+          "color": "grey",
+          "padding": "40px 0 0 0",
+          "text-align": "center"
         }
       }
+      if (!style[element]) return "";
+
       let string = "";
       for (key in style[element]) {
         string += `${key}: ${style[element][key]}; `
@@ -39,15 +61,27 @@ exports.handler = function (event, context, callback) {
           </h1>
       </header>
       <main style="${getStyle("main")}">
-          <div>
-              ${message}
-          </div>
-          <ul>
-              <li>Nome: ${name}</li>
-              <li>Empresa: ${company}</li>
-              <li>Email: ${email}</li>
-              <li>Telefone: ${phone}</li>
-          </ul>
+        <div>Data: ${moment().format("DD-MM-YYYY")} | Horário: ${moment().format("HH:MM")}</div>
+        <div style="${getStyle("line")}"></div>
+        <h2 style="${getStyle("h2")}">Dados Informados</h2>
+        <ul>
+          <li>Nome: ${name}</li>
+          <li>Empresa: ${company}</li>
+          <li>Email: ${email}</li>
+          <li>Telefone: ${phone}</li>
+        </ul>
+        <div style="${getStyle("line")}"></div>
+        <h2 style="${getStyle("h2")}">Descrição do Projeto</h2>
+        <div>
+            ${messageHTML}
+        </div>
+        <div style="${getStyle("line")}"></div>
+        <div style="${getStyle("footer")}">
+        LOCAMEX - Locação de Container
+        <a href="https://www.locamex.com.br">www.locamex.com.br</a>
+        <a href="mailto:engenharia@locamex.com.br">engenharia@locamex.com.br</a>
+        (11) 5532-0790 / 5533-5614 / 5031-4762 / 3132-7175
+        São Paulo - SP
       </main>
     `
 
@@ -78,7 +112,7 @@ exports.handler = function (event, context, callback) {
           Data: 'Formulário de Contato - Locamex'
         }
       },
-      Source: 'Formulário de Contato <tgnemecek@gmail.com>',
+      Source: 'Contato <tgnemecek@gmail.com>',
       ReplyToAddresses: ['tgnemecek@gmail.com'],
     };
 

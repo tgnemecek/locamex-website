@@ -19,12 +19,13 @@ function setupForm() {
                 if (str.search(/@./) === -1) errors++;
             }
         })
-        if (!errors) {
+        if (true) {
             e.preventDefault();
             e.stopPropagation();
-            $.post(".netlify/functions/send-email", form.serialize()).then(function() {
-                $('.thanks-box').css({ display: 'flex' });
-            });
+            console.log(form.find('.message').val());
+            // $.post(".netlify/functions/send-email", form.serialize()).then(function() {
+            //     $('.thanks-box').css({ display: 'flex' });
+            // });
         }
     })
     function closeThanksBox() {
