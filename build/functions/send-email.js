@@ -11,7 +11,7 @@ exports.handler = function(event, context, callback) {
         pass: process.env.EMAIL_PASSWORD
       },
       tls: {
-        rejectUnauthorized: false
+        rejectUnauthorized: false // Remove after domain setup
       }
     })
   
@@ -19,7 +19,7 @@ exports.handler = function(event, context, callback) {
   
     var mailOptions = {
       from: 'tgnemecek@yahoo.com.br',
-      to: 'tgnemecek@gmail.com',
+      to: 'thiago@locaweb.com.br',
       bcc: '',
       subject: 'Test subject',
       text: text
