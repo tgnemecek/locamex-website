@@ -19,7 +19,7 @@ exports.handler = function (event, context, callback) {
     let params = {
       Destination: {
         CcAddresses: [],
-        ToAddresses: ['thiago@locamex.com.br', email]
+        ToAddresses: ['thiago@locamex.com.br']
       },
       Message: {
         Body: {
