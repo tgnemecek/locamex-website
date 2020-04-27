@@ -3,9 +3,10 @@ const nodemailer = require('nodemailer');
 exports.handler = function(event, context, callback) {
   try {
     let transporter = nodemailer.createTransport({
-      host: "smtp.locamex.com.br",
+      // host: "smtp.locamex.com.br",
+      host: "mail.www15.locaweb.com.br",
       port: 587,
-      secure: false,
+      secure: true,
       auth: {
         user: process.env.EMAIL_ADDRESS,
         pass: process.env.EMAIL_PASSWORD
