@@ -15,7 +15,7 @@ function setupForm() {
         form.find('input, textarea').each(function() {
             data[$(this).attr("name")] = $(this).val();
 
-            if ($(thiis).attr("required")) {
+            if ($(this).attr("required")) {
                 if (!$(this).val()) errors++;
                 if ($(this).hasClass('email')) {
                     let str = $(this).val();
