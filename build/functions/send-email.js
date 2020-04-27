@@ -34,11 +34,11 @@ exports.handler = function (event, context, callback) {
 
     let html = `
       <header>
-          <h1 style=${getStyle(h1)}>
+          <h1 style="${getStyle("h1")}">
           LOCAMEX - Formulário de Contato
           </h1>
       </header>
-      <main style=${getStyle(main)}>
+      <main style="${getStyle("main")}">
           <div>
               ${message}
           </div>
