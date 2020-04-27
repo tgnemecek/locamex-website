@@ -1,4 +1,5 @@
-var AWS = require('aws-sdk');
+const AWS = require('aws-sdk');
+const querystring = require("querystring");
 
 exports.handler = function (event, context, callback) {
   try {
