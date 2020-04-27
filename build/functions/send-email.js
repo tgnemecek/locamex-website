@@ -29,16 +29,25 @@ exports.handler = function (event, context, callback) {
           "font-weight": "bold"
         },
         logo: {
-          "margin-top": "20px"
+          "margin": "auto",
+          "display": "block"
         },
         main: {
           "font-family": "'Open Sans', 'Arial', sans-serif",
           "font-size": "16px",
           "border": "1px solid #cccccc",
-          "margin": "0 10vw 0 10vw",
           "background-color": "#f9f9f9",
-          "padding": "0 10% 20px 10%",
+          "padding": "0",
+          "margin": "auto",
+          "width": "100%",
+          "max-width": "700px",
           "box-shadow": "3px 3px 5px grey"
+        },
+        inner: {
+          "margin": "auto",
+          "width": "100%",
+          "max-width": "600px",
+          "padding": "0 10px",
         },
         ul: {
           "margin": "0"
@@ -52,6 +61,7 @@ exports.handler = function (event, context, callback) {
         },
         footer: {
           "color": "grey",
+          "font-size": "13px",
           "padding": "40px 0 0 0",
           "text-align": "center"
         }
@@ -67,28 +77,30 @@ exports.handler = function (event, context, callback) {
 
     let html = `
       <div style="${getStyle("main")}">
-        <img src="http://www.locamex.com.br/wp-content/uploads/2018/04/Locamex_Logo_Slogan.png" height="150" style="${getStyle("logo")}"/>
-        <div>Data: ${date.format("DD-MM-YYYY")} | Horário: ${date.format("HH:MM")}</div>
-        <div style="${getStyle("line")}"></div>
-        <h2 style="${getStyle("h2")}">Dados Informados</h2>
-        <ul style="${getStyle("ul")}">
-          <li style="${getStyle("li")}">Nome: ${name}</li>
-          <li style="${getStyle("li")}">Empresa: ${company}</li>
-          <li style="${getStyle("li")}">Email: ${email}</li>
-          <li style="${getStyle("li")}">Telefone: ${phone}</li>
-        </ul>
-        <div style="${getStyle("line")}"></div>
-        <h2 style="${getStyle("h2")}">Descrição do Projeto</h2>
-        <div>
-            ${messageHTML}
+        <div style="${getStyle("inner")}">
+          <img src="http://www.locamex.com.br/wp-content/uploads/2018/04/Locamex_Logo_Slogan.png" height="150" style="${getStyle("logo")}"/>
+          <div>Data: ${date.format("DD-MM-YYYY")} | Horário: ${date.format("HH:MM")}</div>
+          <div style="${getStyle("line")}"></div>
+          <h2 style="${getStyle("h2")}">Dados Informados</h2>
+          <ul style="${getStyle("ul")}">
+            <li style="${getStyle("li")}">Nome: ${name}</li>
+            <li style="${getStyle("li")}">Empresa: ${company}</li>
+            <li style="${getStyle("li")}">Email: ${email}</li>
+            <li style="${getStyle("li")}">Telefone: ${phone}</li>
+          </ul>
+          <div style="${getStyle("line")}"></div>
+          <h2 style="${getStyle("h2")}">Descrição do Projeto</h2>
+          <div>
+              ${messageHTML}
+          </div>
+          <div style="${getStyle("line")}"></div>
+          <div style="${getStyle("footer")}">
+          LOCAMEX - Containers Personalizados<br/>
+          <a href="https://www.locamex.com.br">www.locamex.com.br</a><br/>
+          <a href="mailto:engenharia@locamex.com.br">engenharia@locamex.com.br</a><br/>
+          (11) 5532-0790 / 5533-5614 / 5031-4762 / 3132-7175<br/>
+          São Paulo - SP
         </div>
-        <div style="${getStyle("line")}"></div>
-        <div style="${getStyle("footer")}">
-        LOCAMEX - Locação de Container<br/>
-        <a href="https://www.locamex.com.br">www.locamex.com.br</a><br/>
-        <a href="mailto:engenharia@locamex.com.br">engenharia@locamex.com.br</a><br/>
-        (11) 5532-0790 / 5533-5614 / 5031-4762 / 3132-7175<br/>
-        São Paulo - SP
       </div>
     `
 
