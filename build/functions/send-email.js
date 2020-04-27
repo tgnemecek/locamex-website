@@ -24,7 +24,7 @@ exports.handler = function (event, context, callback) {
         },
         h2: {
           "color":" #f7931b",
-          "font-size": "18px",
+          "font-size": "1.5em",
           "margin": "3pt 0 5pt 0",
           "font-weight": "bold"
         },
@@ -34,7 +34,7 @@ exports.handler = function (event, context, callback) {
         },
         main: {
           "font-family": "'Open Sans', 'Arial', sans-serif",
-          "font-size": "16px",
+          "font-size": "14px",
           "border": "1px solid #cccccc",
           "background-color": "#f9f9f9",
           "padding": "0",
@@ -61,8 +61,8 @@ exports.handler = function (event, context, callback) {
         },
         footer: {
           "color": "grey",
-          "font-size": "13px",
-          "padding": "40px 0 0 0",
+          "font-size": "0.9em",
+          "margin": "20px 0",
           "text-align": "center"
         }
       }
@@ -76,9 +76,9 @@ exports.handler = function (event, context, callback) {
     }
 
     let html = `
-      <div style="${getStyle("main")}">
+      <div style="${getStyle("main")}" class="main">
         <div style="${getStyle("inner")}">
-          <img src="http://www.locamex.com.br/wp-content/uploads/2018/04/Locamex_Logo_Slogan.png" height="150" style="${getStyle("logo")}"/>
+          <img src="/assets/logo-email.png" height="150" style="${getStyle("logo")}"/>
           <div>Data: ${date.format("DD-MM-YYYY")} | Horário: ${date.format("HH:MM")}</div>
           <div style="${getStyle("line")}"></div>
           <h2 style="${getStyle("h2")}">Dados Informados</h2>
