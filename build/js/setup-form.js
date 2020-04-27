@@ -12,7 +12,7 @@ function setupForm() {
     form.find('.submit').on('click', function(e) {
         let errors = 0;
         let data = {};
-        form.find('input[required]').each(function() {
+        form.find('input[required], textarea[required]').each(function() {
             if (!$(this).val()) errors++;
             if ($(this).hasClass('email')) {
                 let str = $(this).val();
@@ -36,7 +36,8 @@ function setupForm() {
             } else {
                 delete data.file;
                 delete data.filename;
-                sendEmail(data);
+                console.log(data);
+                // sendEmail(data);
             }
         }
     })
