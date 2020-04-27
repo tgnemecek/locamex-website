@@ -12,18 +12,22 @@ function setupForm() {
     form.find('#submit').on('click', function(e) {
         let errors = 0;
         let data = {};
-        form.find('input[required], textarea[required]').each(function() {
-            if (!$(this).val()) errors++;
-            if ($(this).hasClass('email')) {
-                let str = $(this).val();
-                if (str.search(/@./) === -1) errors++;
-            }
+        form.find('input, textarea').each(function() {
             data[$(this).attr("name")] = $(this).val();
+
+            if ($(thiis).attr("required")) {
+                if (!$(this).val()) errors++;
+                if ($(this).hasClass('email')) {
+                    let str = $(this).val();
+                    if (str.search(/@./) === -1) errors++;
+                }
+            }
         })
         if (!errors) {
             e.preventDefault();
             e.stopPropagation();
-            data.token = reCaptchaToken;
+
+            $('.contact .loading-box').css({ display: 'flex' });
 
             let file = form.find('#file').prop('files')[0];
             if (file) {
@@ -32,22 +36,22 @@ function setupForm() {
                 reader.onloadend = () => {
                     data.file = reader.result;
                     data.filename = filename;
-                    sendEmail(data);
+                    getToken("submit-form").then((token) => {
+                        sendEmail({...data, token});
+                    })
+                    
                 }
                 reader.readAsDataURL(file);
             } else {
                 delete data.file;
                 delete data.filename;
-                sendEmail(data);
+                getToken("submit-form").then((token) => {
+                    sendEmail({...data, token});
+                })
             }
         }
     })
     function sendEmail(data) {
-        // $.post(".netlify/functions/send-email", form.serialize()).then(function () {
-        //     $('.thanks-box').css({
-        //         display: 'flex'
-        //     });
-        // });
         $.ajax({
             url: ".netlify/functions/send-email",
             context: document.body,
@@ -58,13 +62,14 @@ function setupForm() {
             crossDomain: true,
             data,
             success: function(res) {
-                console.log(res);
+                $('.contact .loading-box').css({ display: 'none' });
                 $('.thanks-box').css({
                     display: 'flex'
                 });
             },
             error: function(h, type, error) {
                 alert("Erro de Servidor!")
+                $('.contact .loading-box').css({ display: 'none' });
                 console.log(type);
                 console.log(error);
             }

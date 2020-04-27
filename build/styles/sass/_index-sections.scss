@@ -119,6 +119,41 @@ section.clients {
 
 section.contact {
     position: relative;
+    .loading-box {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 3;
+        .background {
+            background-color: rgba(128, 128, 128, 0.363);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            z-index: -1;
+        }
+        .box {
+            padding: 25px;
+            background-color: $light-gray;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .loader {
+            margin: 25px auto 0 auto;
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid $primary-color;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+    }
     .thanks-box {
         position: fixed;
         top: 0;

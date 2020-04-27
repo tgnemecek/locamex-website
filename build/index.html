@@ -490,6 +490,13 @@
             </ul>
         </section>
         <section id="contato" class="contact">
+            <div class="loading-box">
+                <div class="background"></div>
+                <div class="box">
+                    <strong>Enviando mensagem...</strong>
+                    <div class="loader"></div>
+                </div>
+            </div>
             <div class="thanks-box">
                 <div class="background"></div>
                 <div class="box">
@@ -506,7 +513,7 @@
                 <div class="lazyload" data-script="js/setup-form.js"></div>
                 <form method="POST" data-aos="fade-up">
                     <div class="left-side">
-                        <label class="bot">Don’t fill this out if you're human: <input name="bot"/></label>
+                        <label class="bot">Don’t fill this out if you're human: <input name="bot" id="bot"/></label>
                         <label for="name" class="visually-hidden">Seu Nome:</label>
                         <input required id="name" name="name" class="name" type="text" placeholder="Seu Nome">
                         <label for="company" class="visually-hidden">Nome da Empresa:</label>

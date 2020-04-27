@@ -54,3 +54,8 @@ $dark-gray: #333;
     background-color: $secondary-color;
     box-shadow: inset 0 -5px $secondary-color-darker;
 }
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
