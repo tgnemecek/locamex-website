@@ -2,6 +2,13 @@ var AWS = require('aws-sdk');
 
 exports.handler = function (event, context, callback) {
   try {
+    let data = querystring.parse(event.body);
+    console.log(data);
+    let name = data.name;
+    let company = data.company;
+    let email = data.email;
+    let phone = data.phone;
+    let message = data.message;
     // Set the region
     AWS.config.update({
       region: 'us-east-1'
@@ -11,22 +18,22 @@ exports.handler = function (event, context, callback) {
     let params = {
       Destination: {
         CcAddresses: [],
-        ToAddresses: ['tgnemecek@gmail.com']
+        ToAddresses: ['thiago@locamex.com.br', email]
       },
       Message: {
         Body: {
           Html: {
             Charset: "UTF-8",
-            Data: "HTML_FORMAT_BODY"
+            Data: `${message} - ${phone} - ${name} - ${company}`
           },
           Text: {
             Charset: "UTF-8",
-            Data: "TEXT_FORMAT_BODY"
+            Data: `<strong>${message} - ${phone} - ${name} - ${company}</strong>`
           }
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Test email'
+          Data: 'Formulário de Contato - Locamex'
         }
       },
       Source: 'tgnemecek@gmail.com',

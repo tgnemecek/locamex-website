@@ -14,9 +14,7 @@ exports.handler = function(event, context, callback) {
     console.log("Function called");
     console.log("Event:");
     console.log(event);
-    console.log("Context:");
-    console.log(context);
-
+    
     console.log("Getting data.");
     let data = querystring.parse(event.body);
     let Body = new Buffer(data.buffer.replace(/^data:\w+\/\w+;base64,/, ""),'base64');
