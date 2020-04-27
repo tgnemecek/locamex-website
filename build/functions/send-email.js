@@ -84,6 +84,7 @@ exports.handler = function (event, context, callback) {
     } else sendEmail();
 
     function sendEmail(err, fileURL) {
+      console.log(fileUrl);
       if (err) {
         console.log(err);
         callback(err);
