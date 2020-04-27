@@ -1,6 +1,6 @@
 const AWS = require('aws-sdk');
 const querystring = require("querystring");
-const moment = require('moment');
+const moment = require('moment-timezone');
 
 exports.handler = function (event, context, callback) {
   try {
@@ -11,6 +11,7 @@ exports.handler = function (event, context, callback) {
     let phone = data.phone;
     let message = data.message;
     let messageHTML = message.replace(/\r?\n/g, '<br />');
+    let date = moment().tz('America/Sao_Paulo');
 
     function getStyle(element) {
       let style = {
@@ -23,8 +24,12 @@ exports.handler = function (event, context, callback) {
         },
         h2: {
           "color":" #f7931b",
+          "font-size": "18px",
           "margin": "3pt 0 5pt 0",
           "font-weight": "bold"
+        },
+        logo: {
+          "margin-top": "20px"
         },
         main: {
           "font-family": "'Open Sans', 'Arial', sans-serif",
@@ -61,13 +66,9 @@ exports.handler = function (event, context, callback) {
     }
 
     let html = `
-      <div>
-          <h1 style="${getStyle("h1")}">
-          LOCAMEX - Formulário de Contato
-          </h1>
-      </div>
       <div style="${getStyle("main")}">
-        <div>Data: ${moment().format("DD-MM-YYYY")} | Horário: ${moment().format("HH:MM")}</div>
+        <img src="http://www.locamex.com.br/wp-content/uploads/2018/04/Locamex_Logo_Slogan.png" height="150" style="${getStyle("logo")}"/>
+        <div>Data: ${date.format("DD-MM-YYYY")} | Horário: ${date.format("HH:MM")}</div>
         <div style="${getStyle("line")}"></div>
         <h2 style="${getStyle("h2")}">Dados Informados</h2>
         <ul style="${getStyle("ul")}">
