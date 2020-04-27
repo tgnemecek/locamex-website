@@ -1,5 +1,6 @@
 const AWS = require('aws-sdk');
 const querystring = require("querystring");
+const moment = require('moment');
 
 exports.handler = function (event, context, callback) {
   try {
@@ -10,13 +11,34 @@ exports.handler = function (event, context, callback) {
     let phone = data.phone;
     let message = data.message;
 
+    function getStyle(element) {
+      let style = {
+        h1: {
+          "font-family": "'Raleway', 'Arial', sans-serif",
+          "font-size": "40px",
+          "background-color": "#f7931b",
+          "padding": "25px",
+          "color": "white"
+        },
+        main: {
+          "font-family": "'Open Sans', 'Arial', sans-serif",
+          "font-size": "18px"
+        }
+      }
+      let string = "";
+      for (key in style[element]) {
+        string += `${key}: ${style[element][key]}; `
+      }
+      return string;
+    }
+
     let html = `
       <header>
-          <h1 style="font-family: 'Raleway', 'Arial', sans-serif; font-size: 40px; background-color: #f7931b; padding: 25px; color: white;">
+          <h1 style=${getStyle(h1)}>
           LOCAMEX - Formulário de Contato
           </h1>
       </header>
-      <main style="font-family: 'Open Sans', 'Arial', sans-serif; font-size: 18px;">
+      <main style=${getStyle(main)}>
           <div>
               ${message}
           </div>
