@@ -79,7 +79,7 @@ exports.handler = function (event, context, callback) {
     let code = new Date().getTime() + "-";
     let filename = data.filename ? code + data.filename : undefined;
 
-    let locamexEmail = 'thiago@locamex.com.br';
+    let locamexEmail = 'locamex@locamex.com.br';
 
     let token = data.token;
     let secret = process.env.RECAPTCHA_SECRET_KEY;
