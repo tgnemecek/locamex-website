@@ -7,7 +7,7 @@ const uploadFile = require('./upload-file.js');
 function getStyle(element) {
   let style = {
     h1: {
-      "font-family": "'Raleway', 'Arial', sans-serif",
+      "font-family": "'Open Sans', 'Arial', sans-serif",
       "font-size": "40px",
       "background-color": "#f7931b",
       "padding": "25px",
@@ -197,7 +197,7 @@ exports.handler = function (event, context, callback) {
         console.log("Email Sent!");
         callback(null, {
           statusCode: 200,
-          body: true
+          body: { success: true }
         });
       })
       .catch((err) => {
