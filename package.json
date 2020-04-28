@@ -4,7 +4,11 @@
   "description": "For the homepage, edit the HTML directly.\r For the other pages, edit:\r -  categories.json to change text content\r -  categories.js to change slideshow functionality\r -  template.html to change the markup",
   "main": "html-generator.js",
   "dependencies": {
-    "jsonfile": "^6.0.1"
+    "glob": "^7.1.6",
+    "jimp": "^0.10.3",
+    "jsonfile": "^6.0.1",
+    "resize-optimize-images": "^1.1.0",
+    "webp-converter": "^2.2.3"
   },
   "devDependencies": {},
   "scripts": {

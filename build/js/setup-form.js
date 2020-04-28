@@ -12,7 +12,8 @@ function setupForm() {
     form.find('#submit').on('click', function(e) {
         let errors = 0;
         let data = {};
-        form.find('input, textarea').each(function() {
+        let inputs = form.find('input, textarea');
+        inputs.each(function() {
             data[$(this).attr("name")] = $(this).val();
 
             if ($(this).attr("required")) {
@@ -27,9 +28,12 @@ function setupForm() {
             e.preventDefault();
             e.stopPropagation();
 
-            $('.contact .loading-box').css({ display: 'flex' });
-
             let file = form.find('#file').prop('files')[0];
+
+            inputs.val("");
+            form.find("#file").prop('files')[0] = "";
+            $('.contact .loading-box').css({ display: 'flex' });
+            
             if (file) {
                 let filename = file.name;
                 let reader = new FileReader();
