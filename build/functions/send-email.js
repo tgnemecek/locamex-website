@@ -85,6 +85,8 @@ exports.handler = function (event, context, callback) {
     let code = new Date().getTime() + "-";
     let filename = data.filename ? code + data.filename : undefined;
 
+    let locamexEmail = 'thiago@locamex.com.br';
+
     let token = data.token;
     let secret = process.env.RECAPTCHA_SECRET_KEY;
     let reCaptchaURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`;
@@ -150,11 +152,11 @@ exports.handler = function (event, context, callback) {
       region: 'us-east-1'
     });
 
-    // Create sendEmail params 
-    let params = {
+    // Create sendEmail params to Client
+    let paramsClient = {
       Destination: {
         CcAddresses: [],
-        ToAddresses: ['tgnemecek@yahoo.com.br']
+        ToAddresses: [email]
       },
       Message: {
         Body: {
@@ -172,16 +174,26 @@ exports.handler = function (event, context, callback) {
           Data: 'LOCAMEX - Pedido de Orçamento de Container'
         }
       },
-      Source: 'Locamex <locamex@locamex.com.br>',
-      ReplyToAddresses: [email],
+      Source: `Locamex <${locamexEmail}>`,
+      ReplyToAddresses: [locamexEmail],
     };
+
+    // Create sendEmail params to Locamex
+    let paramsLocamex = {
+      ...paramsClient,
+      Destination: {
+        CcAddresses: [],
+        ToAddresses: [locamexEmail]
+      },
+      ReplyToAddresses: [email],
+    }
 
     // Create the promise and SES service object
     let sendPromise = new AWS.SES({
       apiVersion: '2010-12-01',
       accessKeyId: process.env.AWS_ID,
       secretAccessKey: process.env.AWS_KEY
-    }).sendEmail(params).promise();
+    }).sendEmail(paramsClient).sendEmail(paramsLocamex).promise();
 
     // Handle promise's fulfilled/rejected states
     sendPromise
