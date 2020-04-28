@@ -40,12 +40,6 @@ function getStyle(element) {
       "max-width": "600px",
       "padding": "0 10px",
     },
-    ul: {
-      "margin": "0"
-    },
-    li: {
-      "list-style": "none"
-    },
     line: {
       "width": "100%",
       "border-top": "1px #666 dotted"
@@ -120,12 +114,12 @@ exports.handler = function (event, context, callback) {
           <div>Data: ${date.format("DD-MM-YYYY")} | Horário: ${date.format("HH:MM")}</div>
           <div style="${getStyle("line")}"></div>
           <h2 style="${getStyle("h2")}">Dados Informados</h2>
-          <ul style="${getStyle("ul")}">
-            <li style="${getStyle("li")}">Nome: ${name}</li>
-            <li style="${getStyle("li")}">Empresa: ${company}</li>
-            <li style="${getStyle("li")}">Email: ${email}</li>
-            <li style="${getStyle("li")}">Telefone: ${phone}</li>
-          </ul>
+          <div>
+            <div>Nome: ${name}</div>
+            <div>Empresa: ${company}</div>
+            <div>Email: ${email}</div>
+            <div>Telefone: ${phone}</div>
+          </div>
           <div style="${getStyle("line")}"></div>
           <h2 style="${getStyle("h2")}">Descrição do Projeto</h2>
           <div>
@@ -188,20 +182,22 @@ exports.handler = function (event, context, callback) {
       ReplyToAddresses: [email],
     }
 
-    // Create the promise and SES service object
-    let sendPromise = new AWS.SES({
+    let awsConfig = {
       apiVersion: '2010-12-01',
       accessKeyId: process.env.AWS_ID,
       secretAccessKey: process.env.AWS_KEY
-    }).sendEmail(paramsClient).sendEmail(paramsLocamex).promise();
+    }
 
-    // Handle promise's fulfilled/rejected states
-    sendPromise
-      .then((res) => {
+    // Create the promise and SES service object
+    let sendToClient = new AWS.SES(awsConfig).sendEmail(paramsClient).promise();
+    let sendToLocamex = new AWS.SES(awsConfig).sendEmail(paramsLocamex).promise();
+
+    Promise.all([sendToClient, sendToLocamex])
+      .then(() => {
         console.log("Email Sent!");
         callback(null, {
           statusCode: 200,
-          body: res.MessageId
+          body: true
         });
       })
       .catch((err) => {
