@@ -93,6 +93,7 @@ exports.handler = function (event, context, callback) {
       .then(res => res.json())
       .then(body => {
         if (!body.success || body.score < 0.6) {
+          console.log('reCaptcha failed');
           callback(null, true);
           return;
         } else {
@@ -103,6 +104,7 @@ exports.handler = function (event, context, callback) {
       });
 
     function sendEmail(err, fileURL) {
+      console.log("Sending Email");
       if (err) {
         console.log(err);
         callback(err);
@@ -152,7 +154,7 @@ exports.handler = function (event, context, callback) {
     let params = {
       Destination: {
         CcAddresses: [],
-        ToAddresses: ['thiago@locamex.com.br']
+        ToAddresses: ['tgnemecek@yahoo.com.br']
       },
       Message: {
         Body: {
@@ -167,11 +169,11 @@ exports.handler = function (event, context, callback) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'Formulário de Contato - Locamex'
+          Data: 'LOCAMEX - Pedido de Orçamento de Container'
         }
       },
-      Source: 'Contato <tgnemecek@gmail.com>',
-      ReplyToAddresses: ['tgnemecek@gmail.com'],
+      Source: 'Locamex <locamex@locamex.com.br>',
+      ReplyToAddresses: [email],
     };
 
     // Create the promise and SES service object
@@ -184,7 +186,7 @@ exports.handler = function (event, context, callback) {
     // Handle promise's fulfilled/rejected states
     sendPromise
       .then((res) => {
-        console.log(res.MessageId);
+        console.log("Email Sent!");
         callback(null, {
           statusCode: 200,
           body: res.MessageId

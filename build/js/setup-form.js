@@ -25,15 +25,24 @@ function setupForm() {
             }
         })
         if (!errors) {
+            // Form verification passed, prevent automatic submission
             e.preventDefault();
             e.stopPropagation();
 
+            // Get file, if any
             let file = form.find('#file').prop('files')[0];
 
+            // Clear fields
             inputs.val("");
             form.find("#file").prop('files')[0] = "";
             $('.contact .loading-box').css({ display: 'flex' });
-            
+
+            // Send Event to Google Analytics
+            gtag('event', 'Orçamento', {
+                'event_category' : 'Pedido de Orçamento',
+                'event_label' : 'Envio de Formulário'
+            });
+
             if (file) {
                 let filename = file.name;
                 let reader = new FileReader();
@@ -43,7 +52,6 @@ function setupForm() {
                     getToken("submitForm").then((token) => {
                         sendEmail({...data, token});
                     })
-                    
                 }
                 reader.readAsDataURL(file);
             } else {
@@ -60,10 +68,6 @@ function setupForm() {
             url: ".netlify/functions/send-email",
             context: document.body,
             method: "POST",
-            headers: {
-                "Access-Control-Allow-Origin": "*"
-            },
-            crossDomain: true,
             data,
             success: function(res) {
                 $('.contact .loading-box').css({ display: 'none' });

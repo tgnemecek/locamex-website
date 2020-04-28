@@ -75,6 +75,24 @@ class SlideShow {
     }
 }
 
+function getToken(action) {
+    return new Promise((resolve, reject) => {
+        try {
+            grecaptcha.execute('6LcvNcIUAAAAAKWPRSTrrSfvyfnqOqGTW2pnpCju', { action })
+            .then((token) => {
+                resolve(token);
+            });
+        }
+        catch(err) {
+            reject(err);
+        }
+    })
+}
+
 window.onload = function() {
     let slideshow = new SlideShow();
+    grecaptcha.ready(function() {
+        let action = window.location.pathname.split("/").pop().split(".")[0];
+        getToken(action);
+    });
 }
