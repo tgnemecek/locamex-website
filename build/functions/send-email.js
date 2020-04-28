@@ -197,7 +197,9 @@ exports.handler = function (event, context, callback) {
         console.log("Email Sent!");
         callback(null, {
           statusCode: 200,
-          body: { success: true }
+          body: JSON.stringify({
+            success: true
+          })
         });
       })
       .catch((err) => {
