@@ -109,6 +109,16 @@
     }
 }
 
+@media (max-width: 740px) {
+    section.category {
+        .img-container {
+            figcaption {
+                display: none;
+            }
+        }
+    }
+}
+
 @media (max-width: 740px) and (orientation:landscape) {
     header.category {
         height: 0;

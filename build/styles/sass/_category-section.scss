@@ -3,7 +3,9 @@ section.category {
     .img-container {
         @include wrapper;
         position: relative;
-        height: 600px;
+        height: calc(100vw / 2);
+        max-height: 600px;
+        width: 100%;
         figure {
             opacity: 0;
         }
