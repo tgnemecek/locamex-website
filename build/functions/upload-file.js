@@ -23,7 +23,6 @@ module.exports = function(file, filename, callback) {
         s3.upload({
             Bucket,
             Key,
-            ContentType: 'image/jpeg',
             ContentEncoding: 'base64',
             Body
         }, (err, data) => {

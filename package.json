@@ -5,7 +5,7 @@
   "main": "html-generator.js",
   "dependencies": {
     "glob": "^7.1.6",
-    "jimp": "^0.10.3",
+    "jimp": "^0.16.2",
     "jsonfile": "^6.0.1",
     "resize-optimize-images": "^1.1.0",
     "webp-converter": "^2.2.3"
