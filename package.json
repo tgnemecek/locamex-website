@@ -10,7 +10,9 @@
     "resize-optimize-images": "^1.1.0",
     "webp-converter": "^2.2.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "sass": "^1.79.5"
+  },
   "scripts": {
     "build": "cd build/functions && npm i"
   },

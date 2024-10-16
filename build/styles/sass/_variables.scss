@@ -10,6 +10,8 @@ $light-gray: #f8f9f9;
 $gray: #777;
 $dark-gray: #333;
 
+$section-vertical-padding: 4rem;
+
 @mixin wrapper {
     max-width: 1200px;
     width: 85%;
