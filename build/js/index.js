@@ -106,5 +106,4 @@ window.onload = function() {
 
     $(window).scroll(changeNavBar);
     changeNavBar();
-
 }
