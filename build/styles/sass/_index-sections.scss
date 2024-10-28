@@ -256,13 +256,13 @@ section.contact {
         display: grid;
         grid-template-columns: 1fr 1fr;
         .contact-list > li {
-            list-style: circle;
+            list-style: none;
             margin-bottom: 1rem;
         }
         .phone-list > li {
-            list-style: square;
+            list-style: disc;
             margin-top: 1rem;
-            margin-left: 1rem;
+            margin-left: 3rem;
         }
         .logo {
             width: 55%;
@@ -271,5 +271,13 @@ section.contact {
         iframe {
             width: 100%;
         }
+    }
+    .location-icon, .email-icon, .phone-icon {
+        width: 36px;
+        margin-right: 14px;
+    }
+    .whatsapp-icon {
+        width: 40px;
+        margin-right: 10px;
     }
 }
