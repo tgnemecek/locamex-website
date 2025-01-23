@@ -89,7 +89,7 @@ function getToken(action) {
     })
 }
 
-window.on("load", () => {
+window.onload(() => {
     let slideshow = new SlideShow();
     grecaptcha.ready(function() {
         let action = window.location.pathname.split("/").pop().split(".")[0];
